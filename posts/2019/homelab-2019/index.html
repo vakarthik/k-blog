@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Homelab v1 | K&#39;s blog</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Intro ping 127.0.0.1
+There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year.">
+<meta name="author" content="Karthik">
+<link rel="canonical" href="https://vakarthik.com/posts/2019/homelab-2019/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.css" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.js" onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://vakarthik.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vakarthik.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vakarthik.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.1" />
+<meta property="og:title" content="Homelab v1" />
+<meta property="og:description" content="Intro ping 127.0.0.1
+There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vakarthik.com/posts/2019/homelab-2019/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-07-31T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-07-31T00:00:00&#43;00:00" />
+<meta property="og:see_also" content="https://vakarthik.com/posts/2021/compiling-and-building-caddy/" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Homelab v1"/>
+<meta name="twitter:description" content="Intro ping 127.0.0.1
+There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://vakarthik.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Homelab v1",
+      "item": "https://vakarthik.com/posts/2019/homelab-2019/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Homelab v1",
+  "name": "Homelab v1",
+  "description": "Intro ping 127.0.0.1\nThere are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Intro ping 127.0.0.1\nThere are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year. Also the recent development in smart home devices have compelled me to try it. I will share my experiences in creating a homelab here hoping it might be useful for someone, especially people from India.\nHuge thanks to these reddit communities for inspiration.\nhomelab\nselfhosted\nThe Hardware My HomeLab Configuration.\nSo you need bare metal first to do everything. I searched in google for about 3 months and decided to buy a used HP/Dell Server. Some other options were going on budget and getting a NUC, Mini PC from aliexpress etc., Finally decided to purchase used server mainly because i wanted to get the feel of it. Server \u0026 Rack:\nI purchased a used Dell R210II from zaco computers. Came to know about them from some posts i found in quora. The server had quad core xeon processor and 8GB of RAM without hard disk. The total cost was around Rs.32k including taxes. I then purchased a 120GB SSD from amazon and installed in it. I would highly recommend zaco computers for purchasing used servers. I contacted them through email and got prompt response. They shipped through fedex and server properly packed.\nAt the time of purchase i had no idea of what an iDRAC is! but they have put an iDRAC enterprise card in it without me specifically mentioning it. It was a surprise for me actually. Later i found it very useful for controlling noisy dell fans. So if you are going with Dell, make sure you have iDRAC card installed before you purchase.\nThe only reason for going with Dell R210 was that the length of server would fit into a network rack! I have installed my server and switch in a network rack (jumbo version) purchased from mass racks. I would also recommend mass racks if you need any network racks. Get a cantilever tray for switches. One 6U jumbo rack with cantilever tray costed around 2.7k.\nIf you are reading this, never ever install a server in a network rack! It was my idea and later i realized that it was very bad. First, the server is very heavy and coupled with rack and switches the entire arrangement is so heavy to lift and mount it on wall. Even if you mount on wall the small 4-corner support will not hold it. I have supported in front by using two extra anchor bolts from top. Second, cable management is very difficult. If you are from India i feel, It is cheap to assemble a wooden rack and rack mount angles with carpenter help. Dimensions can easily be found online. Mass racks also has wheel mounted server racks.\nSwitch, AP and Misc I had a relative coming from US and he was kind enough to carry a used Dell 16-port switch ($40 ebay) and a refurbished Tp-link EAP225 ($50 amazon).\nSo now i have a complete setup with a modem (i had already), a wifi AP, a switch and a server!\nNow let’s spin up ubuntu…\nVirtualisation with ESXi After getting my server up and running, i installed ubuntu server 18.04 on bare metal. Few days passed and already it had more than basic nginx and php. Also I felt the server hardware was not used to its full potential by using it just as a webserver. I was searching for a solution and came across VMware ESXI and bumped into the world of virtualisation. It is bare metal hypervisor. Having individual virtual machines would be easy for managing different set of software.\nI installed free version of ESXI 6.7 and after installing i created 4 VMs (pfsense, webserver, homeassistant and TIG stack).\nOne port on my server is directly connected to modem and other one two switch. I created two virtual switches, named them WAN and LAN. Only pfsense VM had two ports attached to it, and all other VMs are on LAN vswitch. pfsense had fully fledged firewall rules with SNORT and pfblockerNG enabled. It also had openVPN server running, so that i could check from remote.\nTIG stack is obvious, it had few grafana dashboards which looked awesome and telegraf collected metrics from pfsense and other devices using SNMP.\nThen I installed home-assistant and played with it for a while. It is a great piece of software for home automation lovers.\nThe webserver VM had two static sites, one my personal and other one for my uncle. They were working well with dynamic DNS and i off-loaded all the images to cloudinary. Only html,css and js loads from my server. (Still i have a 512 kbps upload speed on my ADSL connection)\nThis was going on for about three months. It was a great experience to install, configure and troubleshoot all the softwares i have mentioned above, especially pfsense and home-assistant which have some learning curve.\nThen I felt that something was missing in ESXI, and came across proxmox. After seeing a couple of videos on youtube, I decided to get rid of ESXI. Backed up some important configurations such as nginx, pfsense, home-assistant and deleted ESXI!\nSwitching to Proxmox Problem With ESXi There are lot of people who use VMWare ESXi for virtualization. But most of them manage through Vsphere and have multiple servers VSAN clusters. The vsphere license is not free. The main limitation i faced with free version of ESXi, is that there is no proper backup solution. I had to shutdown VMs and copy manually to NAS. I tried some solutions found in reddit communities and third party software, none of which served my purpose properly. Ideally i would love to take automated full backups of all my VMs, which was missing in free ESXi. Also for people with 2-3 servers in small homelab, clustering with free ESXi is not possible.\nEnter into Proxmox I went through couple of youtube videos which walked through Proxmox configuration. I then manually backed up all my important configurations in ESXi and formatted the disk and installed proxmox. After playing with proxmox I can say that the following features are enough for switching to proxmox from ESXi.\n  Auto backup: I have added my NAS backup directory as NFS mount point directly inside proxmox GUI and it takes automated backup of all my VMs every Sunday night while I sleep! such a relief.\n  Clustering: Although i don’t use it is great feature for people with multiple servers on their homelab. You can also create a HA cluster!!\n  Containers: You can add LXC containers directly through GUI, such a neat feature. i use some small services like reverse proxy, wireguard etc., in separate containers. Some also use docker with portainer.\n  Storage: You can create a ZFS pool (ah! those freenas times) inside proxmox and also you can ceph storage. I don’t use it, but many find it very useful.\n  I am using it for more than 3 months and proxmox seems to be pretty stable. No issues so far and I would highly recommend to anyone. The only problem i faced was some routing issue in default vmbr0 bridge. It was also solved after some help from reddit and a full restart.\nTypical Indian Homelab Struggle The biggest issue i was facing initially are those powercuts. I am not sure about the rest of the world, but in India we are facing frequent power cuts ranging from few minutes to hours sometimes. I had a APC Backups 600VA, which is enough for my single server and NAS but the issue was my server would reboot sometimes during power cut. I really had a nightmare when my server boots each and everytime during power cut.\nOnline UPS After doing some research, i decided to buy online-ups. The 3k-5k UPS which we normally purchase is a line-interactive UPS and they take milli-seconds for switching over. Hence sometimes if the delay more than 50 or 100 mill seconds my server starts to reboot. Online UPS is costly and getting them online is little difficult in India. I could find only this store selling APC online UPS at a good price.\nI had few contacts in chennai, and purchased a 1kVA online UPS. It is working well for the past 6 months and it costs Rs.15k. If anyone wants details send me a email. As of writing this post, my proxmox shows uptime of 157 days!\nSo in short, if you are getting a server for homelab, get an online UPS along with it.\nPortforward alternative Getting a High Speed FTTH For people in India, FTTH is still a dream especially for those who are in small cities. People in metro cities like chennai have a plenty of options and providers to choose from, whereas people in tier-2 cities have less choice and even there were no one providing in my town till 1 year back. So i finally see a 100Mbps speed on my screen, thanks to cherrinet. Although BSNL is providing FTTH in recent years, i couldn’t get in my place, since mine was few kilometers away from town.\nAnyone remember those noise from dial up modem ? (I’ll write a post someday on how i updated my IE for Rs.3k!)\nSpeed with Cons Ok, now fire stick streams 1080p without any lag but that high connection came with a problem. By default i cannot port forward. They provide a CGNAT service, so all i get is private IP on WAN interface (I cannot open standard ports like 80 443 for incoming traffic, without which my site will not be accessible from outside world.) The ONT devices don’t have any configuration and they connect using PPPoE. If i would like to portforward, i should get a static IP which will cost, around 5k per year. So after googling, i decided to create a VPN connection between my pfSense and a remote VPS where i could point my DNS and open common ports to the internet. I created a droplet in digitalocean and tried configuring openvpn in ubuntu. I faced lot of issues related to routing. (not an expert in linux and routing).\npfSense Site-to-Site VPN Then i came across a site to site VPN tutorial in pfsense docs, and immediately thought of installing pfSense in a cloud VPS. Luckily vultr has native support to pfsense and you can do a 1 click install. So after installing i had little issues with the configuration and fixed it by googling and doing some research.\nupdate: moved to linode (referral link) since they have a datacenter in Mumbai, ping is 40ms!!\nFor pointing domains to internal IP address, i need a reverse proxy, for with there is haproxy addon for pfsense. Now i have couple of services like this blog, nextcloud etc., exposed to the world. Basically this is how it all works…\nCloudflare DNS – Cloudflare Firewall – pfsense in cloud – SNORT filtering and blocking – HAProxy – Open VPN Tunnel – pfsense in homelab – Individual services (www, nextcloud etc.,)\nOne real advantage is SNORT filters all the unwanted traffic in cloud and allows (hopefully :) ) only required traffic to pass through vpn tunnel.\nUseful Links https://www.techhelpguides.com/2017/06/12/ultimate-pfsense-openvpn-guide/\nhttps://nguvu.org/pfsense/pfsense-inbound_vpn/\nhttps://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/\n",
+  "wordCount" : "1924",
+  "inLanguage": "en",
+  "datePublished": "2019-07-31T00:00:00Z",
+  "dateModified": "2019-07-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Karthik"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vakarthik.com/posts/2019/homelab-2019/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "K's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vakarthik.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://vakarthik.com/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/index.xml" title="Feed">
+                    <span>Feed</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Homelab v1
+    </h1>
+    <div class="post-meta">July 31, 2019&nbsp;·&nbsp;10 min&nbsp;·&nbsp;Karthik
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#intro" aria-label="Intro">Intro</a></li>
+                <li>
+                    <a href="#the-hardware" aria-label="The Hardware">The Hardware</a><ul>
+                        
+                <li>
+                    <a href="#switch-ap-and-misc" aria-label="Switch, AP and Misc">Switch, AP and Misc</a></li></ul>
+                </li>
+                <li>
+                    <a href="#virtualisation-with-esxi" aria-label="Virtualisation with ESXi">Virtualisation with ESXi</a></li>
+                <li>
+                    <a href="#switching-to-proxmox" aria-label="Switching to Proxmox">Switching to Proxmox</a><ul>
+                        
+                <li>
+                    <a href="#problem-with-esxi" aria-label="Problem With ESXi">Problem With ESXi</a></li>
+                <li>
+                    <a href="#enter-into-proxmox" aria-label="Enter into Proxmox">Enter into Proxmox</a></li></ul>
+                </li>
+                <li>
+                    <a href="#typical-indian-homelab-struggle" aria-label="Typical Indian Homelab Struggle">Typical Indian Homelab Struggle</a><ul>
+                        
+                <li>
+                    <a href="#online-ups" aria-label="Online UPS">Online UPS</a></li></ul>
+                </li>
+                <li>
+                    <a href="#portforward-alternative" aria-label="Portforward alternative">Portforward alternative</a><ul>
+                        
+                <li>
+                    <a href="#getting-a-high-speed-ftth" aria-label="Getting a High Speed FTTH">Getting a High Speed FTTH</a></li>
+                <li>
+                    <a href="#speed-with-cons" aria-label="Speed with Cons">Speed with Cons</a></li>
+                <li>
+                    <a href="#pfsense-site-to-site-vpn" aria-label="pfSense Site-to-Site VPN">pfSense Site-to-Site VPN</a></li>
+                <li>
+                    <a href="#useful-links" aria-label="Useful Links">Useful Links</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="intro">Intro<a hidden class="anchor" aria-hidden="true" href="#intro">#</a></h3>
+<p><em>ping 127.0.0.1</em></p>
+<p>There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year. Also the recent development in smart home devices have compelled me to try it. I will share my experiences in creating a homelab here hoping it might be useful for someone, especially people from India.</p>
+<p>Huge thanks to these reddit communities for inspiration.</p>
+<p><a href="https://www.reddit.com/r/homelab/">homelab</a></p>
+<p><a href="https://www.reddit.com/r/selfhosted/">selfhosted</a></p>
+<h3 id="the-hardware">The Hardware<a hidden class="anchor" aria-hidden="true" href="#the-hardware">#</a></h3>
+<p>My HomeLab Configuration.</p>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1565097061/Homelab/HomeNetworkv2-no-ip.jpg" alt=""  title="Homelab v1"  />
+</p>
+<p>So you need bare metal first to do everything. I searched in google for about 3 months and decided to buy a used HP/Dell Server. Some other options were going on budget and getting a NUC, Mini PC from aliexpress etc., Finally decided to purchase used server mainly because i wanted to get the feel of it.
+Server &amp; Rack:</p>
+<p>I purchased a used Dell R210II from <a href="https://www.zacocomputer.com/">zaco computers</a>. Came to know about them from some posts i found in quora. The server had quad core xeon processor and 8GB of RAM without hard disk. The total cost was around Rs.32k including taxes. I then purchased a 120GB SSD from amazon and installed in it. I would highly recommend zaco computers for purchasing used servers. I contacted them through email and got prompt response. They shipped through fedex and server properly packed.</p>
+<p>At the time of purchase i had no idea of what an iDRAC is! but they have put an iDRAC enterprise card in it without me specifically mentioning it. It was a surprise for me actually. Later i found it very useful for controlling noisy dell fans. So if you are going with Dell, make sure you have iDRAC card installed before you purchase.</p>
+<p>The only reason for going with Dell R210 was that the length of server would fit into a network rack! I have installed my server and switch in a network rack (jumbo version) purchased from <a href="http://massrack.in/">mass racks</a>. I would also recommend mass racks if you need any network racks. Get a cantilever tray for switches. One 6U jumbo rack with cantilever tray costed around 2.7k.</p>
+<p><em>If you are reading this, never ever install a server in a network rack!</em> It was my idea and later i realized that it was very bad. First, the server is very heavy and coupled with rack and switches the entire arrangement is so heavy to lift and mount it on wall. Even if you mount on wall the small 4-corner support will not hold it. I have supported in front by using two extra anchor bolts from top. Second, cable management is very difficult. If you are from India i feel, It is cheap to assemble a wooden rack and rack mount angles with carpenter help. Dimensions can easily be found online. Mass racks also has wheel mounted server racks.</p>
+<h4 id="switch-ap-and-misc">Switch, AP and Misc<a hidden class="anchor" aria-hidden="true" href="#switch-ap-and-misc">#</a></h4>
+<p>I had a relative coming from US and he was kind enough to carry a used Dell 16-port switch ($40 ebay) and a refurbished Tp-link EAP225 ($50 amazon).</p>
+<p>So now i have a complete setup with a modem (i had already), a wifi AP, a switch and a server!</p>
+<p>Now let’s spin up ubuntu…</p>
+<h3 id="virtualisation-with-esxi">Virtualisation with ESXi<a hidden class="anchor" aria-hidden="true" href="#virtualisation-with-esxi">#</a></h3>
+<p>After getting my server up and running, i installed ubuntu server 18.04 on bare metal. Few days passed and already it had more than basic nginx and php. Also I felt the server hardware was not used to its full potential by using it just as a webserver. I was searching for a solution and came across <a href="https://www.vmware.com/products/esxi-and-esx.html">VMware ESXI</a> and bumped into the world of virtualisation. It is bare metal hypervisor. Having individual virtual machines would be easy for managing different set of software.</p>
+<p>I installed free version of ESXI 6.7 and after installing i created 4 VMs (pfsense, webserver, homeassistant and TIG stack).</p>
+<p>One port on my server is directly connected to modem and other one two switch. I created two virtual switches, named them <strong>WAN</strong> and <strong>LAN</strong>. Only pfsense VM had two ports attached to it, and all other VMs are on LAN vswitch. pfsense had fully fledged firewall rules with SNORT and pfblockerNG enabled. It also had openVPN server running, so that i could check from remote.</p>
+<p>TIG stack is obvious, it had few grafana dashboards which looked awesome and telegraf collected metrics from pfsense and other devices using SNMP.</p>
+<p>Then I installed home-assistant and played with it for a while. It is a great piece of software for home automation lovers.</p>
+<p>The webserver VM had two static sites, one my personal and other one for my uncle. They were working well with dynamic DNS and i off-loaded all the images to cloudinary. Only html,css and js loads from my server. <em>(Still i have a 512 kbps upload speed on my ADSL connection)</em></p>
+<p>This was going on for about three months. It was a great experience to install, configure and troubleshoot all the softwares i have mentioned above, especially pfsense and home-assistant which have some learning curve.</p>
+<p>Then I felt that something was missing in ESXI, and came across proxmox. After seeing a couple of videos on youtube, I decided to get rid of ESXI. Backed up some important configurations such as nginx, pfsense, home-assistant and deleted ESXI!</p>
+<h3 id="switching-to-proxmox">Switching to Proxmox<a hidden class="anchor" aria-hidden="true" href="#switching-to-proxmox">#</a></h3>
+<h4 id="problem-with-esxi">Problem With ESXi<a hidden class="anchor" aria-hidden="true" href="#problem-with-esxi">#</a></h4>
+<p>There are lot of people who use VMWare ESXi for virtualization. But most of them manage through Vsphere and have multiple servers VSAN clusters. The vsphere license is <strong>not free</strong>. The main limitation i faced with free version of ESXi, is that there is no proper backup solution. I had to shutdown VMs and copy manually to NAS. I tried some solutions found in reddit communities and third party software, none of which served my purpose properly. Ideally i would love to take automated full backups of all my VMs, which was missing in free ESXi. Also for people with 2-3 servers in small homelab, clustering with free ESXi is not possible.</p>
+<h4 id="enter-into-proxmox">Enter into Proxmox<a hidden class="anchor" aria-hidden="true" href="#enter-into-proxmox">#</a></h4>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1567529982/Homelab/Proxmox.png" alt=""  />
+</p>
+<p>I went through couple of youtube videos which walked through Proxmox configuration. I then manually backed up all my important configurations in ESXi and formatted the disk and installed proxmox. After playing with proxmox I can say that the following features are enough for switching to proxmox from ESXi.</p>
+<ol>
+<li>
+<p>Auto backup: I have added my NAS backup directory as NFS mount point directly inside proxmox GUI and it takes automated backup of all my VMs every Sunday night while I sleep! such a relief.</p>
+</li>
+<li>
+<p>Clustering: Although i don’t use it is great feature for people with multiple servers on their homelab. You can also create a HA cluster!!</p>
+</li>
+<li>
+<p>Containers: You can add LXC containers directly through GUI, such a neat feature. i use some small services like reverse proxy, wireguard etc., in separate containers. Some also use <a href="https://youtu.be/_xnKMFuv9kc">docker with portainer</a>.</p>
+</li>
+<li>
+<p>Storage: You can create a ZFS pool (ah! those freenas times) inside proxmox and also you can ceph storage. I don’t use it, but many find it very useful.</p>
+</li>
+</ol>
+<p>I am using it for more than 3 months and proxmox seems to be pretty stable. No issues so far and I would highly recommend to anyone. The only problem i faced was some routing issue in default vmbr0 bridge. It was also solved after some help from reddit and a full restart.</p>
+<h3 id="typical-indian-homelab-struggle">Typical Indian Homelab Struggle<a hidden class="anchor" aria-hidden="true" href="#typical-indian-homelab-struggle">#</a></h3>
+<p>The biggest issue i was facing initially are those powercuts. I am not sure about the rest of the world, but in India we are facing frequent power cuts ranging from few minutes to hours sometimes. I had a APC Backups 600VA, which is enough for my single server and NAS but the issue was my server would reboot sometimes during power cut. I really had a nightmare when my server boots each and everytime during power cut.</p>
+<h4 id="online-ups">Online UPS<a hidden class="anchor" aria-hidden="true" href="#online-ups">#</a></h4>
+<p>After doing some research, i decided to buy online-ups. The 3k-5k UPS which we normally purchase is a line-interactive UPS and they take milli-seconds for switching over. Hence sometimes if the delay more than 50 or 100 mill seconds my server starts to reboot. Online UPS is costly and getting them online is little difficult in India. I could find only this store selling <a href="https://apc.estorewale.com">APC online UPS</a> at a good price.</p>
+<p>I had few contacts in chennai, and purchased a <a href="http://resqtechnologies.in/">1kVA online UPS</a>. It is working well for the past 6 months and it costs Rs.15k. If anyone wants details send me a email. As of writing this post, my proxmox shows uptime of 157 days!</p>
+<p>So in short, if you are getting a server for homelab, get an online UPS along with it.</p>
+<h3 id="portforward-alternative">Portforward alternative<a hidden class="anchor" aria-hidden="true" href="#portforward-alternative">#</a></h3>
+<h4 id="getting-a-high-speed-ftth">Getting a High Speed FTTH<a hidden class="anchor" aria-hidden="true" href="#getting-a-high-speed-ftth">#</a></h4>
+<p>For people in India, FTTH is still a dream especially for those who are in small cities. People in metro cities like chennai have a plenty of options and providers to choose from, whereas people in tier-2 cities have less choice and even there were no one providing in my town till 1 year back. So i finally see a 100Mbps speed on my screen, thanks to <a href="https://cherrinet.in/">cherrinet.</a> Although BSNL is providing FTTH in recent years, i couldn’t get in my place, since mine was few kilometers away from town.</p>
+<p>Anyone remember those noise from dial up modem ? (I’ll write a post someday on how i updated my IE for Rs.3k!)</p>
+<h4 id="speed-with-cons">Speed with Cons<a hidden class="anchor" aria-hidden="true" href="#speed-with-cons">#</a></h4>
+<p>Ok, now fire stick streams 1080p without any lag but that high connection came with a problem. By default i cannot port forward. They provide a CGNAT service, so all i get is private IP on WAN interface (I cannot open standard ports like 80 443 for incoming traffic, without which my site will not be accessible from outside world.) The ONT devices don’t have any configuration and they connect using PPPoE. If i would like to portforward, i should get a static IP which will cost, around 5k per year. So after googling, i decided to create a VPN connection between my pfSense and a remote VPS where i could point my DNS and open common ports to the internet. I created a droplet in digitalocean and tried configuring openvpn in ubuntu. I faced lot of issues related to routing. (not an expert in linux and routing).</p>
+<h4 id="pfsense-site-to-site-vpn">pfSense Site-to-Site VPN<a hidden class="anchor" aria-hidden="true" href="#pfsense-site-to-site-vpn">#</a></h4>
+<p>Then i came across a site to site VPN tutorial in pfsense docs, and immediately thought of installing pfSense in a cloud VPS. Luckily vultr has native support to pfsense and you can do a 1 click install. So after installing i had little issues with the configuration and fixed it by googling and doing some research.</p>
+<p><em>update: moved to <a href="https://www.linode.com/?r=7c809392226e72ffbc1271f86116d0b4a8394d47">linode</a> (referral link) since they have a datacenter in Mumbai, ping is 40ms!!</em></p>
+<p>For pointing domains to internal IP address, i need a reverse proxy, for with there is haproxy addon for pfsense. Now i have couple of services like this blog, nextcloud etc., exposed to the world. Basically this is how it all works…</p>
+<p>Cloudflare DNS –&gt; Cloudflare Firewall –&gt; pfsense in cloud –&gt; SNORT filtering and blocking –&gt; HAProxy –&gt; Open VPN Tunnel –&gt; pfsense in homelab –&gt; Individual services (www, nextcloud etc.,)</p>
+<p>One real advantage is SNORT filters all the unwanted traffic in cloud and allows (hopefully :) ) only required traffic to pass through vpn tunnel.</p>
+<h4 id="useful-links">Useful Links<a hidden class="anchor" aria-hidden="true" href="#useful-links">#</a></h4>
+<p><a href="https://www.techhelpguides.com/2017/06/12/ultimate-pfsense-openvpn-guide/">https://www.techhelpguides.com/2017/06/12/ultimate-pfsense-openvpn-guide/</a></p>
+<p><a href="https://nguvu.org/pfsense/pfsense-inbound_vpn/">https://nguvu.org/pfsense/pfsense-inbound_vpn/</a></p>
+<p><a href="https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/">https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/</a></p>
+
+</div>
+  <footer class="post-footer">
+  </footer>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homelab on K&#39;s blog</title>
+    <link>https://vakarthik.com/series/homelab/</link>
+    <description>Recent content in Homelab on K&#39;s blog</description>
+    <image>
+      <url>https://vakarthik.com/papermod-cover.png</url>
+      <link>https://vakarthik.com/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 06 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/series/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTPS for Homelab using Caddy and ACME DNS</title>
+      <link>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</link>
+      <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</guid>
+      <description>HTTPS for Homelab Do we need HTTPS for homelab ? Yeah, why not! When I wanted to install bitwarden_rs, i read their wiki and things started to get shape.
+Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy. I use it as reverse proxy and HTTPS provider for all my homelab apps.</description>
+    </item>
+    
+    <item>
+      <title>Homelab v1</title>
+      <link>https://vakarthik.com/posts/2019/homelab-2019/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vakarthik.com/posts/2019/homelab-2019/</guid>
+      <description>Intro ping 127.0.0.1
+There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year.</description>
+    </item>
+    
+  </channel>
+</rss>
