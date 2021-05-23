@@ -9,16 +9,7 @@
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Photos</title>
-      <link>https://vakarthik.com/photos/</link>
-      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://vakarthik.com/photos/</guid>
-      <description>        </description>
-    </item>
-    
+    <lastBuildDate>Sat, 06 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTTPS for Homelab using Caddy and ACME DNS</title>
       <link>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</link>
@@ -47,6 +38,15 @@ There are some interests which do not change! I used to write html and css in co
       <guid>https://vakarthik.com/about/</guid>
       <description>Full time engineer, part-time learner.
 This site is a result of my interest towards computers, networks etc., and a memory of my lost love for photos. Also this has evolved from time to time based on my skills. I had lot of blog posts and photos in squarespace once. Apparently 10 dollars per month seems a bit too much. Times are changing and so are interests. I wanted to have a server in home and host my website from it.</description>
+    </item>
+    
+    <item>
+      <title>Photos</title>
+      <link>https://vakarthik.com/photos/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vakarthik.com/photos/</guid>
+      <description>        </description>
     </item>
     
     

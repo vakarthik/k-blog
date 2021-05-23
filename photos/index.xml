@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Photos on K&#39;s blog</title>
-    <link>https://vakarthik.com/series/photos/</link>
-    <description>Recent content in Photos on K&#39;s blog</description>
+    <title>Little Things on K&#39;s blog</title>
+    <link>https://vakarthik.com/photos/</link>
+    <description>Recent content in Little Things on K&#39;s blog</description>
     <image>
       <url>https://vakarthik.com/papermod-cover.png</url>
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/series/photos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/photos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Landscape Photos</title>
       <link>https://vakarthik.com/photos/landscape/</link>
@@ -17,15 +17,6 @@
       
       <guid>https://vakarthik.com/photos/landscape/</guid>
       <description>const myWidget = cloudinary.galleryWidget({ &#34;cloudName&#34;: &#34;vakarthik&#34;, &#34;mediaAssets&#34;: [{ &#34;publicId&#34;: &#34;Landscape/06092012_pune_8397_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/08122013_ponmudi_0050_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/09082013_thekkady_0055_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/09122013_ponmudi_0072_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/09122013_ponmudi_0097_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/10082013_thekkady_0168_Panorama_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/11082013_thekkady_0342_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/11082013_thekkady_0344_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/15012013_pongal_0198_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Landscape/16082012_valparai_8080_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;</description>
-    </item>
-    
-    <item>
-      <title>Little Things</title>
-      <link>https://vakarthik.com/photos/</link>
-      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://vakarthik.com/photos/</guid>
-      <description>const myWidget = cloudinary.galleryWidget({ &#34;cloudName&#34;: &#34;vakarthik&#34;, &#34;mediaAssets&#34;: [{ &#34;publicId&#34;: &#34;Macro/09022011_puppy_1332-Edit_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/11032011_macro_2899_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/14052011_kodaikanal_3755_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/15052011_kodaikanal_4541_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/18022011_spider_1465_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/22052012_macro_7322_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/22122010_macro_6623_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/DSC_2400-Edit_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/DSC_3421_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;publicId&#34;: &#34;Macro/DSC_6011_web&#34;, &#34;mediaType&#34;: &#34;image&#34; }, { &#34;</description>
     </item>
     
     <item>
