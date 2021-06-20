@@ -9,7 +9,17 @@
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 06 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homelab Upgrade 2021</title>
+      <link>https://vakarthik.com/posts/2021/homelab-2021/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://vakarthik.com/posts/2021/homelab-2021/</guid>
+      <description>My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!
+Hardware Upgrades Many say olx is a bad place and full of scammers.</description>
+    </item>
+    
     <item>
       <title>HTTPS for Homelab using Caddy and ACME DNS</title>
       <link>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</link>
