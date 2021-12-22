@@ -9,7 +9,17 @@
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 20 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/series/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/series/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Moving to CalyxOS from iPhone/iOS</title>
+      <link>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</link>
+      <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</guid>
+      <description>Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.
+I wanted to move to a privacy friendly OS.</description>
+    </item>
+    
     <item>
       <title>Homelab Upgrade 2021</title>
       <link>https://vakarthik.com/posts/2021/homelab-2021/</link>
