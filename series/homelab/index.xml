@@ -18,6 +18,76 @@
       <guid>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</guid>
       <description>Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.
 I wanted to move to a privacy friendly OS.</description>
+      <content:encoded><![CDATA[<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/c_scale,w_450/v1640191839/Screenshot_20211222-221236_try8db.png" alt=""  title="CalyxOS"  />
+</p>
+<h3 id="reasons-for-moving">Reasons for moving</h3>
+<p>I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.</p>
+<p>I wanted to move to a privacy friendly OS. I have switched from Windows to Linux completely (both laptop and desktop) and using it as a daily driver for the past one year. In iOS there is a little you could do to customise settings, and you just have to trust apple with everything. I really like the concept of having controls in our hands. Fine grain controls are possible with android and its apps, but I do not want to leave one big tech and join another. It wouldn&rsquo;t help the motive for my switch.</p>
+<p>I looked at pinephone, and its availabilty in India is a big question. So with not much of an option left, i was looking for custom ROMs in xda forum and other places.</p>
+<p>(for those of you intrested in privacy, check the <a href="https://techlore.tech/">techlore</a> and <a href="https://inteltechniques.com/blog/">intel techniques</a> )</p>
+<h3 id="hopping-on-to-calyxos">Hopping on to CalyxOS</h3>
+<p>I somehow stumbled upon <a href="https://grapheneos.org/">grapheneos</a> and <a href="https://calyxos.org/">calyxos</a>. I did some research ( <a href="https://nerdschalk.com/how-to-fix-oem-unlock-greyed-out-or-oem-unlock-disabled-problem/">video-1</a> <a href="https://www.youtube.com/watch?v=qTtgzNGRAfA">video-2</a> ) and finally settled with calyxos. One main reason is usability of some google apps in calyxos over graphene. Also i do not want to jump into privacy express, but take some baby steps to see where it leads.</p>
+<p>I bought a new Pixel 4a from flipkart during offers. It costs around 25k plus I got google nest for free. So i powered my pixel, just skipped all setup steps wherever possible and cliked on build number few to become developer, and then my heart burst when i saw &lsquo;OEM unlocking &rsquo; option grayed out. After a quick google search, i did a <a href="https://www.youtube.com/watch?v=heVNcdq2MKA">factory reset</a> which enabled the &lsquo;OEM unlocking&rsquo; option. Then you follow standard installation procedure detailed in calyx website. Just few simple steps.</p>
+<h3 id="esim-migration-woes">Esim migration woes</h3>
+<p>There are plenty of tutorials when you search in google for esim migration. But still I took more than 2 attempts to correct a simple mistake I made. I even went on to read official manual from gsm, which was meant for telecom operators.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Step 1. From old mobile send the following SMS to 199. You will receive a 19 digit eSIM number 32 digit activation code.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">GETESIM &lt;EID of new phone&gt; &lt;IMEI of new phone&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Step 2. Send the following SMS from old mobile to 199
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SIMCHG &lt;19 digit eSIM no. received after doing step 1&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   Sleep (2) hrs
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Step 3. Confirm by sending SMS &#39;1&#39; to 183
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Step 4. Enter the 19 digit eSIM code during Activation call
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Step 5. Add mobile data plan in your phone, and enter the activation code manually in the following format.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">LPA:1$smdprd.jio.com$Activationcode
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">(note: only for jio, other operators, check the respective website)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Now your eSIM will get activated successfully.
+</span></span></code></pre></div><p>All the <a href="https://gadgets.ndtv.com/how-to/features/jio-esim-how-to-activate-guide-steps-apple-iphone-samsung-galaxy-google-pixel-motorola-razr-5g-2520919">tutorials</a> out there are just copy paste from someone and none of them clearly mention you should send EID of new phone (although it&rsquo;s kind of obvious, i did mistake twice). Also note as per GSM manual the activation code need not be exactly 32 characters. There are different formats.</p>
+<h3 id="setting-up-as-a-daily-driver">Setting up as a daily driver</h3>
+<p>This is my primary phone and I set it up so that it is more usable and as private as possible.</p>
+<h4 id="camera">Camera</h4>
+<p>Download the GCam app from xda forum. It is much better than default camera and other camera apps.</p>
+<h4 id="microg-aurora-store-and-google-account">Microg, Aurora store and google account</h4>
+<p>I tried using microg without a google account at first. But since Aurora Store uses a random gmail to login, and the gmail account is created in a different country, some specific apps to India are not listed in store.</p>
+<p>I quickly created a throwaway gmail address with false details and using it for this purpose. I would also advise you to do the same since many apps related banking won&rsquo;t be available on F-Droid.</p>
+<h4 id="vpn">VPN</h4>
+<p>Tried two to three different VPN and settled with <a href="https://windscribe.com/yo/dbrkwi07">Windscribe</a> (referral link). Got this in Black Friday offer, $30 per year pro account.  It had three servers in India with good speeds. The server in Chennai seems to be down since 10 days. I am using Pune or Mumbai.
+I do not use VPN for work profile. The email provider has Geo restrictions in place. Whenever the VPN chooses some other country, and email client checks mail using IMAP, bam i get a blocked notification from email provider. So better I use Work profile without VPN and turn it off after work.</p>
+<h4 id="usable-apps">Usable apps</h4>
+<p>Some apps which I find very useful, apart from default, popular and well known apps. (some are in f-driod and some are in play store)</p>
+<p>Antennapod - Podcasts<br>
+Backdrops - Wallpapers<br>
+Bromite - Browser <br>
+FeedMe - Feed Reader<br>
+Genius Scan - Scanner App<br>
+Infinity - Reddit Client<br>
+QKSMS - SMS<br>
+OpenWeather - Weather<br>
+Simplelogin - Email Alias (I have a pro account grabbed during BF)<br>
+Obsidian - Notes<br>
+Syncthing - Sync (for camera and notes folder sync)<br>
+Termux - Terminal emulator</p>
+<p>I have <a href="https://alternativeto.net/list/28655/the-ultimate-f-droid-setup/">linked</a> an article containing some very useful apps in f-droid store.</p>
+<h4 id="apps-working-and-not-working">Apps working and not working</h4>
+<p>The only app which i used in iPhone and not working in calyxos is Google pay. Apart from that i use Yono SBI, BHIM, Kite and all other apps work well so far without any issues (3 months as of this writing).</p>
+<p>I really hate that google has put phone number in first and UPI ID as second. I mean many of my friends have no idea of their UPI ID. They just say Gpay me. 😞</p>
+<p>Other than this i really miss Android Auto.</p>
+<h4 id="apps-i-wish-i-have-not-installed">Apps i wish i have not installed</h4>
+<p>Google does some things so well, for which there is no real replacement. One example is Google Maps. Although Apple Maps is catching up fast, it has a long way to go in India. It is true for all other open source map apps out there. If you are in India, just install google maps. No alternatives as of now.</p>
+<p>And since my work requires whatsapp and google meet, i have installed both of them. I wanted to get rid of whatsapp badly, but work updates are done in whatsapp groups. 😑</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Overall I am happy with the switch. Now I can control which apps will go through VPN and which apps will not even have Internet access, using built-in Datura firewall, which was out of scope in iOS. Not to mention calyx is pretty stable on pixel devices.</p>
+<p>Hope there is some useful information for you above. I hope one day i will clear all my digital tracks and use OS like graphene as a daily driver. 😃</p>
+]]></content:encoded>
     </item>
     
     <item>
@@ -28,6 +98,72 @@ I wanted to move to a privacy friendly OS.</description>
       <guid>https://vakarthik.com/posts/2021/homelab-2021/</guid>
       <description>My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!
 Hardware Upgrades Many say olx is a bad place and full of scammers.</description>
+      <content:encoded><![CDATA[<p>My <a href="https://vakarthik.com/posts/2019/homelab-2019/">homelab</a> was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!</p>
+<h3 id="hardware-upgrades">Hardware Upgrades</h3>
+<p>Many say <a href="https://olx.in">olx</a> is a bad place and full of scammers. But i never thought i would find good and genuine deals there, especially for servers. Back in september 2020, i came across a deal for Dell R520 server with dual hex-core processor and 128GB of memory for 35k! The deal was posted by IT manager of a small firm in bangalore, and seems they were upgrading. I got 2 Dell R520 with 64GB of RAM and dual hex-core processor for 65k! 64gigs is more than sufficient for me. Thanks to a friend in bangalore, i could get these servers and door deliver it to me free of cost 😉</p>
+<p>The server had fiber channel cards (seems they were using some SAN storage arrays), dual power supply, dual RJ45 network adapters and iDRAC v7 card. Such a sweet deal for the money. The one thing it did not have was HDD caddy. I was planning to put 5 x 2 TB HDD and make RAIDz2, so I had to shell out some extra money to buy these caddy.</p>
+<p>My current homelab has the following hardware, juicing around 500W and consuming more than 200 units of electricity per month 😑 I sold the small WD MyCloud EX2 NAS since i am having plenty of drive space in my R520 and proxmox has native zfs support.</p>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1624197795/Homelab/hardware-config-2021.jpg" alt=""  title="Homelab 2021 Hardware"  />
+</p>
+<h3 id="the-rack">The Rack</h3>
+<p>I enquired <a href="http://massrack.in/">massrack</a> for a 17 to 22U server rack. They told they had a 17U 1000mm depth rack which would cost around 15k. I was not interested to spend it at that time since i had already spent a lot on servers, and decided to create a own rack since my uncle had a pretty laser cutting machine in his factory. The output was somewhat ok, but the main problem was i could not get it closed due to alignment issues and there is a slight mismatch with square holes on rails. I guess i would buy a proper server rack late this year.</p>
+<script src="https://product-gallery.cloudinary.com/all.js" type="text/javascript">
+</script>  
+<div id="my-gallery" style="max-width:95%;margin:auto">
+</div>
+<script type="text/javascript">
+const myWidget = cloudinary.galleryWidget({
+    "cloudName": "vakarthik",
+    "mediaAssets": [{
+        "publicId": "Homelab/PHOTO-2021-01-27-14-57-17",
+        "mediaType": "image"
+    }, {
+        "publicId": "Homelab/PHOTO-2021-01-27-14-57-29",
+        "mediaType": "image"
+    }, {
+        "publicId": "Homelab/IMG_4345",
+        "mediaType": "image"
+    }],
+    "carouselLocation": "bottom",
+    "carouselStyle": "indicators",
+    "container": "#my-gallery"
+});
+myWidget.render();
+</script>
+<h3 id="high-availability-ha-dilemma">High Availability (HA) Dilemma</h3>
+<p>Setting up a 3 node proxmox cluster is pretty stright-forward and well documented. So i quickly set-up a 3 node proxmox cluster with my 2 new servers, and time to dig into HA.</p>
+<p>Intially i had set up my services in a VM and made it as highly available VM in proxmox. But there was delay since the VM disk has to be moved from one node to another during failover. Then i stumbled upon docker-swarm which seems to check all the requirements. But the nerds in reddit were advising to go with kubernetes instead of docker-swarm.</p>
+<p>I checked a few tutorials and blogs (mentioned in reference below) and decided to go with <a href="https://k3s.io/">k3s</a>, a lightweight version of k8s created by rancher labs.</p>
+<p>First i installed rancher-ui and tried to install apps through gui. It was very confusing and i prefer <code>yaml</code> like in docker-compose. So i deleted rancher installation and started creating apps from plain manifests. Somehow i didn&rsquo;t like helm charts also. Creating a manifest from scratch allows me to customise everything, helm charts allow customisation but, i prefer plain manifests.</p>
+<p>Kubernetes was very <a href="https://www.reddit.com/r/kubernetes/comments/nfbqag/kubernetes_isnt_that_hard_they_said_youll_have_no/">strange</a> for about a month, and those manifest files looked alien to me at first. But after trying it out and deploying more apps, i realised k8s was the way to go! If one day i decide to sell my homelab hardware due to some reasons, i can still put my apps on cloud with same manifest files (small  modifications might be required) in minimal time, as almost all cloud providers have support for k8s engine.</p>
+<p>Now you delete a pod in k3s, it instantly spins another one. A node turns off! no problem, all the services in the failed node are started on available nodes with minimum downtime. The main issue with proxmox HA VM was not the downtime, but the reliability of re-starting services in another node when one fails. Also i use <a href="https://longhorn.io/">longhorn</a> for persistant storage, which uses free space in all nodes and aggregates them into usable space for persistant-volumes.</p>
+<h3 id="dual-wan-and-pfsense">Dual WAN and pfSense</h3>
+<p>I already have a 100 Mbps FTTH from cherrinet. Since it had downtime due to cable cut issues (not often but 3-4 times a month) i wanted a backup connection. Luckily BSNL was also providing FTTH in my area. So i decided to get it and set-up dual wan in pfsesne. I downgraded cherrinet plan to 50mbps and BSNL connection is 60mbps. After some tinkering i got the dual wan working in my pfsense. It was not easy as i expected 😏 Here is how mine works. You can read more on CARP and dual WAN setup in netgate official docs, they have got detailed explanation.</p>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1624197795/Homelab/dual-wan-pfsense.jpg" alt=""  title="pfSense DUAL WAN Setup"  />
+</p>
+<h3 id="current-state">Current State</h3>
+<p>This is my current state as of writing this blog post. I use nginx and metallb for ingress, longhorn for storage.</p>
+<iframe style="border:none" width="800" height="450" src="https://whimsical.com/embed/UeNQJJbTV9wsoGacfVQy51"></iframe>
+<h3 id="upgrades-and-todo">Upgrades and ToDo</h3>
+<p>There is always something to change and something to upgrade</p>
+<h5 id="apps-and-services">Apps and Services</h5>
+<p>Have to find out a way to archive all my mailboxes. Need to setup webtrees for family. And anything interesting from r/selfhosted</p>
+<h5 id="backups">Backups</h5>
+<p>As of now i have not configured proper backups for persistant volumes. I am looking setting up minio or direct nfs backup to my zfs pool from inside longhorn. Also for my personal files need to automate my manual backup strategy and push important files to cloud.</p>
+<h5 id="gigabit-switch">Gigabit switch</h5>
+<p>I had a dell powerconnect 16 port switch. The power supply (5V, 8A) on it failed and i purchased a after-market one from amazon, which worked fine for few months. At present it is not working. Need to upgrade to cisco/hp/dell 16-24 port all gigabit switch. Still looking in olx sometimes 😄</p>
+<h5 id="ups">UPS</h5>
+<p>The 1kVA ups which i have is currently the only single point of failure 😨. Also the backup time is less than 30 minutes. Need to get one more 1kVA UPS and use my additional PSU in R520. Also looking at solar setup 😉 let us see</p>
+<h5 id="rack">Rack</h5>
+<p>Need to get proper server rack for enclosing the servers and make some arrangement to vent out the hot air from backside. Also need to put blanking panels to avoid hot and cold air mixing.</p>
+<h5 id="desktop">Desktop</h5>
+<p>Last one on the list, looking at AMD custom builds. This will take some time&hellip;</p>
+<h3 id="reference">Reference</h3>
+<p>Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)</p>
+<p><a href="https://rpi4cluster.com/">rpi4cluster</a></p>
+<p><a href="https://www.youtube.com/c/wenkatn-justmeandopensource/videos">Just me and Opensource- Youtube</a></p>
+<p><a href="https://www.youtube.com/channel/UCOk-gHyjcWZNj3Br4oxwh0A">Technotim - youtube</a></p>
+]]></content:encoded>
     </item>
     
     <item>
@@ -38,6 +174,110 @@ Hardware Upgrades Many say olx is a bad place and full of scammers.</description
       <guid>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</guid>
       <description>HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.
 Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps.</description>
+      <content:encoded><![CDATA[<h3 id="https-for-homelab">HTTPS for Homelab</h3>
+<p>When I wanted to install bitwarden_rs (now vaultwarden), i read their <a href="https://github.com/dani-garcia/vaultwarden/wiki/Enabling-HTTPS">wiki</a> and got struck with an idea to setup my homelab apps behind https.</p>
+<p>Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik <em>(both are good, but not suitable for my usecase)</em>. <a href="https://caddyserver.com/v2">Caddy</a> is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps. I have found the configuration is much easier compared to other reverse proxies out there.</p>
+<p>Caddy will serve all content using HTTPS by default with its self signed SSL certificates. But i have found that all browsers do not play well and throw a warning. To make the browsers trust the self-signed SSL, you need to add the root certificate to the respective OS and browser cert store. It is very difficult to do it manually, especially for mobile devices. So I use letsencrypt wilcard certificate from my unused domain for homelab.</p>
+<p>Letsencrypt will issue a free ssl certificate which is trusted by all browsers. You have to prove the domain ownership to letsencrypt, that&rsquo;s where http and DNS challenge comes into play. Read more about it <a href="https://letsencrypt.org/how-it-works/">here</a>.</p>
+<p>By default the caddy binary does not have cloudflare-dns plugin for acme DNS challenge. This is important because all my homelab services are not exposed to internet and there is no way http challenge will work.</p>
+<p><a href="https://github.com/caddyserver/xcaddy">xcaddy</a> is tool for compiling and installing caddy from source. <em>(please note that this tool is still under development, but i have found it to be working without any issue)</em></p>
+<p>Please note that to proceed you should have a VM or Container for playing around. I have a dedicated ubuntu container running for reverse proxy.</p>
+<h3 id="downoad-and-install-go">Downoad and Install Go</h3>
+<p><a href="https://golang.org/">Go</a> language is needed for compiling and installing caddy.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## download go https://golang.org/doc/install
+</span></span><span class="line"><span class="cl">wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## extract
+</span></span><span class="line"><span class="cl">sudo tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## add PATH env variable 
+</span></span><span class="line"><span class="cl">export PATH=$PATH:/usr/local/go/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## reboot check if go is installed
+</span></span><span class="line"><span class="cl">go version
+</span></span></code></pre></div><p><em>Version is <code>1.16.3</code> as of writing this, so please change accordingly.</em></p>
+<h3 id="download-and-install-xcaddy">Download and install xcaddy</h3>
+<p>Proceed to latest xcaddy <a href="https://github.com/caddyserver/xcaddy/releases">releases</a> page and download the <code>*.deb</code> package. <em>Version is <code>0.1.9</code> as of writing this, so please change accordingly.</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://github.com/caddyserver/xcaddy/releases/download/v0.1.9/xcaddy_0.1.9_linux_arm64.deb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo dpkg -i xcaddy_0.1.9_linux_arm64.deb
+</span></span></code></pre></div><p>Other install methods are also listed in the github page.</p>
+<h3 id="build-caddy-with-optional-plugins">Build Caddy with optional plugins</h3>
+<p>We have downloaded pre-requesites and now we will build caddy with cloudflare-dns plugin. I have added webdav just for this tutorial purpose, feel free to delete it if you are not using it. There are many other plugins, please <a href="https://github.com/search?q=caddy-plugins">search</a> and feel free to include the ones you like.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">xcaddy build \
+</span></span><span class="line"><span class="cl">    --with github.com/caddy-dns/cloudflare
+</span></span><span class="line"><span class="cl">    --with github.com/mholt/caddy-webdav
+</span></span></code></pre></div><p>The above command will download the caddy source and compile and create a <code>caddy</code> binary in the folder where you run the command.</p>
+<h3 id="starting-caddy-service">Starting caddy service</h3>
+<p>The compiled binary file needs to be moved to correct location and a service files needs to be created.</p>
+<p>Create a file <code>/etc/systemd/system/caddy.service</code> with the following contents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Unit]
+</span></span><span class="line"><span class="cl">Description=Caddy
+</span></span><span class="line"><span class="cl">Documentation=https://caddyserver.com/docs/
+</span></span><span class="line"><span class="cl">After=network.target network-online.target
+</span></span><span class="line"><span class="cl">Requires=network-online.target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Service]
+</span></span><span class="line"><span class="cl">User=caddy
+</span></span><span class="line"><span class="cl">Group=caddy
+</span></span><span class="line"><span class="cl">ExecStart=/usr/local/bin/caddy run --environ --config /etc/caddy/Caddyfile
+</span></span><span class="line"><span class="cl">ExecReload=/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile
+</span></span><span class="line"><span class="cl">TimeoutStopSec=5s
+</span></span><span class="line"><span class="cl">LimitNOFILE=1048576
+</span></span><span class="line"><span class="cl">LimitNPROC=512
+</span></span><span class="line"><span class="cl">PrivateTmp=true
+</span></span><span class="line"><span class="cl">ProtectSystem=full
+</span></span><span class="line"><span class="cl">AmbientCapabilities=CAP_NET_BIND_SERVICE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Install]
+</span></span><span class="line"><span class="cl">WantedBy=multi-user.target
+</span></span></code></pre></div><p>Be sure to <code>chmod 644</code> the above file. create a user and group named <code>caddy</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo chmod 644 /etc/systemd/system/caddy.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo groupadd --system caddy
+</span></span><span class="line"><span class="cl">sudo useradd --system --gid caddy caddy
+</span></span></code></pre></div><p>Move the compiled binary to <code>/usr/local/bin/caddy</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo chown root:root /usr/local/bin/caddy
+</span></span><span class="line"><span class="cl">sudo chmod 755 /usr/local/bin/caddy
+</span></span></code></pre></div><h3 id="caddyfile">Caddyfile</h3>
+<p>Create a <code>Caddyfile</code> in <code>/etc/caddy/Caddyfile</code>. The following is an example configuration, and complete options and configuration can be checked in official <a href="https://caddyserver.com/docs/caddyfile-tutorial">docs</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*.homelab.tld {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  tls YOUR_EMAIL
+</span></span><span class="line"><span class="cl">  tls {
+</span></span><span class="line"><span class="cl">     dns cloudflare API_KEY
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  @app1 host app1.homelab.tld
+</span></span><span class="line"><span class="cl">  @app2 host app2.homelab.tld
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">  handle @app1 {
+</span></span><span class="line"><span class="cl">     reverse_proxy 192.168.1.10:4000
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">  handle @app2 {
+</span></span><span class="line"><span class="cl">     reverse_proxy 192.168.1.11:3000
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  log {
+</span></span><span class="line"><span class="cl">     output file /var/log/caddy/access.log {
+</span></span><span class="line"><span class="cl">        roll_size 10mb
+</span></span><span class="line"><span class="cl">        roll_keep 5
+</span></span><span class="line"><span class="cl">        roll_keep_for 24h
+</span></span><span class="line"><span class="cl">     }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>The above example assumes homelab.tld domain DNS records are managed by cloudflare. When starting caddy it does ACME DNS challenge using the cloudflare DNS plugin to verify the domain ownership and then gets a wildcard SSL certificate from letsencrypt automatically.</p>
+<h3 id="reference">Reference</h3>
+<ol>
+<li><a href="https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148">https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-host-a-website-with-caddy-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-host-a-website-with-caddy-on-ubuntu-18-04</a></li>
+<li><a href="https://www.linode.com/docs/guides/compile-caddy-from-source/">https://www.linode.com/docs/guides/compile-caddy-from-source/</a></li>
+<li><a href="https://caddyserver.com/docs/caddyfile/directives/tls">https://caddyserver.com/docs/caddyfile/directives/tls</a></li>
+</ol>
+<p>For more adventure, try your own CA.</p>
+<p><a href="https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/">https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/</a></p>
+]]></content:encoded>
     </item>
     
     <item>
@@ -48,6 +288,80 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
       <guid>https://vakarthik.com/posts/2019/homelab-2019/</guid>
       <description>Intro ping 127.0.0.1
 There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year.</description>
+      <content:encoded><![CDATA[<h3 id="intro">Intro</h3>
+<p><em>ping 127.0.0.1</em></p>
+<p>There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year. Also the recent development in smart home devices have compelled me to try it. I will share my experiences in creating a homelab here hoping it might be useful for someone, especially people from India.</p>
+<p>Huge thanks to these reddit communities for inspiration.</p>
+<p><a href="https://www.reddit.com/r/homelab/">homelab</a></p>
+<p><a href="https://www.reddit.com/r/selfhosted/">selfhosted</a></p>
+<h3 id="the-hardware">The Hardware</h3>
+<p>My HomeLab Configuration.</p>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1565097061/Homelab/HomeNetworkv2-no-ip.jpg" alt=""  title="Homelab v1"  />
+</p>
+<p>So you need bare metal first to do everything. I searched in google for about 3 months and decided to buy a used HP/Dell Server. Some other options were going on budget and getting a NUC, Mini PC from aliexpress etc., Finally decided to purchase used server mainly because i wanted to get the feel of it.
+Server &amp; Rack:</p>
+<p>I purchased a used Dell R210II from <a href="https://www.zacocomputer.com/">zaco computers</a>. Came to know about them from some posts i found in quora. The server had quad core xeon processor and 8GB of RAM without hard disk. The total cost was around Rs.32k including taxes. I then purchased a 120GB SSD from amazon and installed in it. I would highly recommend zaco computers for purchasing used servers. I contacted them through email and got prompt response. They shipped through fedex and server properly packed.</p>
+<p>At the time of purchase i had no idea of what an iDRAC is! but they have put an iDRAC enterprise card in it without me specifically mentioning it. It was a surprise for me actually. Later i found it very useful for controlling noisy dell fans. So if you are going with Dell, make sure you have iDRAC card installed before you purchase.</p>
+<p>The only reason for going with Dell R210 was that the length of server would fit into a network rack! I have installed my server and switch in a network rack (jumbo version) purchased from <a href="http://massrack.in/">mass racks</a>. I would also recommend mass racks if you need any network racks. Get a cantilever tray for switches. One 6U jumbo rack with cantilever tray costed around 2.7k.</p>
+<p><em>If you are reading this, never ever install a server in a network rack!</em> It was my idea and later i realized that it was very bad. First, the server is very heavy and coupled with rack and switches the entire arrangement is so heavy to lift and mount it on wall. Even if you mount on wall the small 4-corner support will not hold it. I have supported in front by using two extra anchor bolts from top. Second, cable management is very difficult. If you are from India i feel, It is cheap to assemble a wooden rack and rack mount angles with carpenter help. Dimensions can easily be found online. Mass racks also has wheel mounted server racks.</p>
+<h4 id="switch-ap-and-misc">Switch, AP and Misc</h4>
+<p>I had a relative coming from US and he was kind enough to carry a used Dell 16-port switch ($40 ebay) and a refurbished Tp-link EAP225 ($50 amazon).</p>
+<p>So now i have a complete setup with a modem (i had already), a wifi AP, a switch and a server!</p>
+<p>Now let’s spin up ubuntu…</p>
+<h3 id="virtualisation-with-esxi">Virtualisation with ESXi</h3>
+<p>After getting my server up and running, i installed ubuntu server 18.04 on bare metal. Few days passed and already it had more than basic nginx and php. Also I felt the server hardware was not used to its full potential by using it just as a webserver. I was searching for a solution and came across <a href="https://www.vmware.com/products/esxi-and-esx.html">VMware ESXI</a> and bumped into the world of virtualisation. It is bare metal hypervisor. Having individual virtual machines would be easy for managing different set of software.</p>
+<p>I installed free version of ESXI 6.7 and after installing i created 4 VMs (pfsense, webserver, homeassistant and TIG stack).</p>
+<p>One port on my server is directly connected to modem and other one two switch. I created two virtual switches, named them <strong>WAN</strong> and <strong>LAN</strong>. Only pfsense VM had two ports attached to it, and all other VMs are on LAN vswitch. pfsense had fully fledged firewall rules with SNORT and pfblockerNG enabled. It also had openVPN server running, so that i could check from remote.</p>
+<p>TIG stack is obvious, it had few grafana dashboards which looked awesome and telegraf collected metrics from pfsense and other devices using SNMP.</p>
+<p>Then I installed home-assistant and played with it for a while. It is a great piece of software for home automation lovers.</p>
+<p>The webserver VM had two static sites, one my personal and other one for my uncle. They were working well with dynamic DNS and i off-loaded all the images to cloudinary. Only html,css and js loads from my server. <em>(Still i have a 512 kbps upload speed on my ADSL connection)</em></p>
+<p>This was going on for about three months. It was a great experience to install, configure and troubleshoot all the softwares i have mentioned above, especially pfsense and home-assistant which have some learning curve.</p>
+<p>Then I felt that something was missing in ESXI, and came across proxmox. After seeing a couple of videos on youtube, I decided to get rid of ESXI. Backed up some important configurations such as nginx, pfsense, home-assistant and deleted ESXI!</p>
+<h3 id="switching-to-proxmox">Switching to Proxmox</h3>
+<h4 id="problem-with-esxi">Problem With ESXi</h4>
+<p>There are lot of people who use VMWare ESXi for virtualization. But most of them manage through Vsphere and have multiple servers VSAN clusters. The vsphere license is <strong>not free</strong>. The main limitation i faced with free version of ESXi, is that there is no proper backup solution. I had to shutdown VMs and copy manually to NAS. I tried some solutions found in reddit communities and third party software, none of which served my purpose properly. Ideally i would love to take automated full backups of all my VMs, which was missing in free ESXi. Also for people with 2-3 servers in small homelab, clustering with free ESXi is not possible.</p>
+<h4 id="enter-into-proxmox">Enter into Proxmox</h4>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1567529982/Homelab/Proxmox.png" alt=""  />
+</p>
+<p>I went through couple of youtube videos which walked through Proxmox configuration. I then manually backed up all my important configurations in ESXi and formatted the disk and installed proxmox. After playing with proxmox I can say that the following features are enough for switching to proxmox from ESXi.</p>
+<ol>
+<li>
+<p>Auto backup: I have added my NAS backup directory as NFS mount point directly inside proxmox GUI and it takes automated backup of all my VMs every Sunday night while I sleep! such a relief.</p>
+</li>
+<li>
+<p>Clustering: Although i don’t use it is great feature for people with multiple servers on their homelab. You can also create a HA cluster!!</p>
+</li>
+<li>
+<p>Containers: You can add LXC containers directly through GUI, such a neat feature. i use some small services like reverse proxy, wireguard etc., in separate containers. Some also use <a href="https://youtu.be/_xnKMFuv9kc">docker with portainer</a>.</p>
+</li>
+<li>
+<p>Storage: You can create a ZFS pool (ah! those freenas times) inside proxmox and also you can ceph storage. I don’t use it, but many find it very useful.</p>
+</li>
+</ol>
+<p>I am using it for more than 3 months and proxmox seems to be pretty stable. No issues so far and I would highly recommend to anyone. The only problem i faced was some routing issue in default vmbr0 bridge. It was also solved after some help from reddit and a full restart.</p>
+<h3 id="typical-indian-homelab-struggle">Typical Indian Homelab Struggle</h3>
+<p>The biggest issue i was facing initially are those powercuts. I am not sure about the rest of the world, but in India we are facing frequent power cuts ranging from few minutes to hours sometimes. I had a APC Backups 600VA, which is enough for my single server and NAS but the issue was my server would reboot sometimes during power cut. I really had a nightmare when my server boots each and everytime during power cut.</p>
+<h4 id="online-ups">Online UPS</h4>
+<p>After doing some research, i decided to buy online-ups. The 3k-5k UPS which we normally purchase is a line-interactive UPS and they take milli-seconds for switching over. Hence sometimes if the delay more than 50 or 100 mill seconds my server starts to reboot. Online UPS is costly and getting them online is little difficult in India. I could find only this store selling <a href="https://apc.estorewale.com">APC online UPS</a> at a good price.</p>
+<p>I had few contacts in chennai, and purchased a <a href="http://resqtechnologies.in/">1kVA online UPS</a>. It is working well for the past 6 months and it costs Rs.15k. If anyone wants details send me a email. As of writing this post, my proxmox shows uptime of 157 days!</p>
+<p>So in short, if you are getting a server for homelab, get an online UPS along with it.</p>
+<h3 id="portforward-alternative">Portforward alternative</h3>
+<h4 id="getting-a-high-speed-ftth">Getting a High Speed FTTH</h4>
+<p>For people in India, FTTH is still a dream especially for those who are in small cities. People in metro cities like chennai have a plenty of options and providers to choose from, whereas people in tier-2 cities have less choice and even there were no one providing in my town till 1 year back. So i finally see a 100Mbps speed on my screen, thanks to <a href="https://cherrinet.in/">cherrinet.</a> Although BSNL is providing FTTH in recent years, i couldn’t get in my place, since mine was few kilometers away from town.</p>
+<p>Anyone remember those noise from dial up modem ? (I’ll write a post someday on how i updated my IE for Rs.3k!)</p>
+<h4 id="speed-with-cons">Speed with Cons</h4>
+<p>Ok, now fire stick streams 1080p without any lag but that high connection came with a problem. By default i cannot port forward. They provide a CGNAT service, so all i get is private IP on WAN interface (I cannot open standard ports like 80 443 for incoming traffic, without which my site will not be accessible from outside world.) The ONT devices don’t have any configuration and they connect using PPPoE. If i would like to portforward, i should get a static IP which will cost, around 5k per year. So after googling, i decided to create a VPN connection between my pfSense and a remote VPS where i could point my DNS and open common ports to the internet. I created a droplet in digitalocean and tried configuring openvpn in ubuntu. I faced lot of issues related to routing. (not an expert in linux and routing).</p>
+<h4 id="pfsense-site-to-site-vpn">pfSense Site-to-Site VPN</h4>
+<p>Then i came across a site to site VPN tutorial in pfsense docs, and immediately thought of installing pfSense in a cloud VPS. Luckily vultr has native support to pfsense and you can do a 1 click install. So after installing i had little issues with the configuration and fixed it by googling and doing some research.</p>
+<p><em>update: moved to <a href="https://www.linode.com/?r=7c809392226e72ffbc1271f86116d0b4a8394d47">linode</a> (referral link) since they have a datacenter in Mumbai, ping is 40ms!!</em></p>
+<p>For pointing domains to internal IP address, i need a reverse proxy, for with there is haproxy addon for pfsense. Now i have couple of services like this blog, nextcloud etc., exposed to the world. Basically this is how it all works…</p>
+<p>Cloudflare DNS –&gt; Cloudflare Firewall –&gt; pfsense in cloud –&gt; SNORT filtering and blocking –&gt; HAProxy –&gt; Open VPN Tunnel –&gt; pfsense in homelab –&gt; Individual services (www, nextcloud etc.,)</p>
+<p>One real advantage is SNORT filters all the unwanted traffic in cloud and allows (hopefully :) ) only required traffic to pass through vpn tunnel.</p>
+<h4 id="useful-links">Useful Links</h4>
+<p><a href="https://www.techhelpguides.com/2017/06/12/ultimate-pfsense-openvpn-guide/">https://www.techhelpguides.com/2017/06/12/ultimate-pfsense-openvpn-guide/</a></p>
+<p><a href="https://nguvu.org/pfsense/pfsense-inbound_vpn/">https://nguvu.org/pfsense/pfsense-inbound_vpn/</a></p>
+<p><a href="https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/">https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/</a></p>
+]]></content:encoded>
     </item>
     
   </channel>
