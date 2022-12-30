@@ -27,31 +27,31 @@ I wanted to move to a privacy friendly OS.</description>
 <p>(for those of you intrested in privacy, check the <a href="https://techlore.tech/">techlore</a> and <a href="https://inteltechniques.com/blog/">intel techniques</a> )</p>
 <h3 id="hopping-on-to-calyxos">Hopping on to CalyxOS</h3>
 <p>I somehow stumbled upon <a href="https://grapheneos.org/">grapheneos</a> and <a href="https://calyxos.org/">calyxos</a>. I did some research ( <a href="https://nerdschalk.com/how-to-fix-oem-unlock-greyed-out-or-oem-unlock-disabled-problem/">video-1</a> <a href="https://www.youtube.com/watch?v=qTtgzNGRAfA">video-2</a> ) and finally settled with calyxos. One main reason is usability of some google apps in calyxos over graphene. Also i do not want to jump into privacy express, but take some baby steps to see where it leads.</p>
-<p>I bought a new Pixel 4a from flipkart during offers. It costs around 25k plus I got google nest for free. So i powered my pixel, just skipped all setup steps wherever possible and cliked on build number few to become developer, and then my heart burst when i saw &lsquo;OEM unlocking &rsquo; option grayed out. After a quick google search, i did a <a href="https://www.youtube.com/watch?v=heVNcdq2MKA">factory reset</a> which enabled the &lsquo;OEM unlocking&rsquo; option. Then you follow standard installation procedure detailed in calyx website. Just few simple steps.</p>
+<p>I bought a new Pixel 4a from flipkart during offers. It costs around 25k plus I got google nest for free. So i powered my pixel, just skipped all setup steps wherever possible and cliked on build number few to become developer, and then my heart burst when i saw &lsquo;OEM unlocking ' option grayed out. After a quick google search, i did a <a href="https://www.youtube.com/watch?v=heVNcdq2MKA">factory reset</a> which enabled the &lsquo;OEM unlocking&rsquo; option. Then you follow standard installation procedure detailed in calyx website. Just few simple steps.</p>
 <h3 id="esim-migration-woes">Esim migration woes</h3>
 <p>There are plenty of tutorials when you search in google for esim migration. But still I took more than 2 attempts to correct a simple mistake I made. I even went on to read official manual from gsm, which was meant for telecom operators.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Step 1. From old mobile send the following SMS to 199. You will receive a 19 digit eSIM number 32 digit activation code.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">GETESIM &lt;EID of new phone&gt; &lt;IMEI of new phone&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Step 2. Send the following SMS from old mobile to 199
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">SIMCHG &lt;19 digit eSIM no. received after doing step 1&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">   Sleep (2) hrs
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Step 3. Confirm by sending SMS &#39;1&#39; to 183
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Step 4. Enter the 19 digit eSIM code during Activation call
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Step 5. Add mobile data plan in your phone, and enter the activation code manually in the following format.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">LPA:1$smdprd.jio.com$Activationcode
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">(note: only for jio, other operators, check the respective website)
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Now your eSIM will get activated successfully.
-</span></span></code></pre></div><p>All the <a href="https://gadgets.ndtv.com/how-to/features/jio-esim-how-to-activate-guide-steps-apple-iphone-samsung-galaxy-google-pixel-motorola-razr-5g-2520919">tutorials</a> out there are just copy paste from someone and none of them clearly mention you should send EID of new phone (although it&rsquo;s kind of obvious, i did mistake twice). Also note as per GSM manual the activation code need not be exactly 32 characters. There are different formats.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Step 1. From old mobile send the following SMS to 199. You will receive a 19 digit eSIM number 32 digit activation code.
+
+GETESIM &lt;EID of new phone&gt; &lt;IMEI of new phone&gt;
+
+Step 2. Send the following SMS from old mobile to 199
+
+SIMCHG &lt;19 digit eSIM no. received after doing step 1&gt;
+
+   Sleep (2) hrs
+
+Step 3. Confirm by sending SMS &#39;1&#39; to 183
+
+Step 4. Enter the 19 digit eSIM code during Activation call
+
+Step 5. Add mobile data plan in your phone, and enter the activation code manually in the following format.
+
+LPA:1$smdprd.jio.com$Activationcode
+
+(note: only for jio, other operators, check the respective website)
+
+Now your eSIM will get activated successfully.
+</code></pre></div><p>All the <a href="https://gadgets.ndtv.com/how-to/features/jio-esim-how-to-activate-guide-steps-apple-iphone-samsung-galaxy-google-pixel-motorola-razr-5g-2520919">tutorials</a> out there are just copy paste from someone and none of them clearly mention you should send EID of new phone (although it&rsquo;s kind of obvious, i did mistake twice). Also note as per GSM manual the activation code need not be exactly 32 characters. There are different formats.</p>
 <h3 id="setting-up-as-a-daily-driver">Setting up as a daily driver</h3>
 <p>This is my primary phone and I set it up so that it is more usable and as private as possible.</p>
 <h4 id="camera">Camera</h4>
@@ -184,90 +184,90 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
 <p>Please note that to proceed you should have a VM or Container for playing around. I have a dedicated ubuntu container running for reverse proxy.</p>
 <h3 id="downoad-and-install-go">Downoad and Install Go</h3>
 <p><a href="https://golang.org/">Go</a> language is needed for compiling and installing caddy.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## download go https://golang.org/doc/install
-</span></span><span class="line"><span class="cl">wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">## extract
-</span></span><span class="line"><span class="cl">sudo tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">## add PATH env variable 
-</span></span><span class="line"><span class="cl">export PATH=$PATH:/usr/local/go/bin
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">## reboot check if go is installed
-</span></span><span class="line"><span class="cl">go version
-</span></span></code></pre></div><p><em>Version is <code>1.16.3</code> as of writing this, so please change accordingly.</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## download go https://golang.org/doc/install
+wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+
+## extract
+sudo tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+
+## add PATH env variable 
+export PATH=$PATH:/usr/local/go/bin
+
+## reboot check if go is installed
+go version
+</code></pre></div><p><em>Version is <code>1.16.3</code> as of writing this, so please change accordingly.</em></p>
 <h3 id="download-and-install-xcaddy">Download and install xcaddy</h3>
 <p>Proceed to latest xcaddy <a href="https://github.com/caddyserver/xcaddy/releases">releases</a> page and download the <code>*.deb</code> package. <em>Version is <code>0.1.9</code> as of writing this, so please change accordingly.</em></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://github.com/caddyserver/xcaddy/releases/download/v0.1.9/xcaddy_0.1.9_linux_arm64.deb
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo dpkg -i xcaddy_0.1.9_linux_arm64.deb
-</span></span></code></pre></div><p>Other install methods are also listed in the github page.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">wget https://github.com/caddyserver/xcaddy/releases/download/v0.1.9/xcaddy_0.1.9_linux_arm64.deb
+
+sudo dpkg -i xcaddy_0.1.9_linux_arm64.deb
+</code></pre></div><p>Other install methods are also listed in the github page.</p>
 <h3 id="build-caddy-with-optional-plugins">Build Caddy with optional plugins</h3>
 <p>We have downloaded pre-requesites and now we will build caddy with cloudflare-dns plugin. I have added webdav just for this tutorial purpose, feel free to delete it if you are not using it. There are many other plugins, please <a href="https://github.com/search?q=caddy-plugins">search</a> and feel free to include the ones you like.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">xcaddy build \
-</span></span><span class="line"><span class="cl">    --with github.com/caddy-dns/cloudflare
-</span></span><span class="line"><span class="cl">    --with github.com/mholt/caddy-webdav
-</span></span></code></pre></div><p>The above command will download the caddy source and compile and create a <code>caddy</code> binary in the folder where you run the command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">xcaddy build \
+    --with github.com/caddy-dns/cloudflare
+    --with github.com/mholt/caddy-webdav
+</code></pre></div><p>The above command will download the caddy source and compile and create a <code>caddy</code> binary in the folder where you run the command.</p>
 <h3 id="starting-caddy-service">Starting caddy service</h3>
 <p>The compiled binary file needs to be moved to correct location and a service files needs to be created.</p>
 <p>Create a file <code>/etc/systemd/system/caddy.service</code> with the following contents.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Unit]
-</span></span><span class="line"><span class="cl">Description=Caddy
-</span></span><span class="line"><span class="cl">Documentation=https://caddyserver.com/docs/
-</span></span><span class="line"><span class="cl">After=network.target network-online.target
-</span></span><span class="line"><span class="cl">Requires=network-online.target
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">[Service]
-</span></span><span class="line"><span class="cl">User=caddy
-</span></span><span class="line"><span class="cl">Group=caddy
-</span></span><span class="line"><span class="cl">ExecStart=/usr/local/bin/caddy run --environ --config /etc/caddy/Caddyfile
-</span></span><span class="line"><span class="cl">ExecReload=/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile
-</span></span><span class="line"><span class="cl">TimeoutStopSec=5s
-</span></span><span class="line"><span class="cl">LimitNOFILE=1048576
-</span></span><span class="line"><span class="cl">LimitNPROC=512
-</span></span><span class="line"><span class="cl">PrivateTmp=true
-</span></span><span class="line"><span class="cl">ProtectSystem=full
-</span></span><span class="line"><span class="cl">AmbientCapabilities=CAP_NET_BIND_SERVICE
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">[Install]
-</span></span><span class="line"><span class="cl">WantedBy=multi-user.target
-</span></span></code></pre></div><p>Be sure to <code>chmod 644</code> the above file. create a user and group named <code>caddy</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo chmod 644 /etc/systemd/system/caddy.service
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo groupadd --system caddy
-</span></span><span class="line"><span class="cl">sudo useradd --system --gid caddy caddy
-</span></span></code></pre></div><p>Move the compiled binary to <code>/usr/local/bin/caddy</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo chown root:root /usr/local/bin/caddy
-</span></span><span class="line"><span class="cl">sudo chmod 755 /usr/local/bin/caddy
-</span></span></code></pre></div><h3 id="caddyfile">Caddyfile</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[Unit]
+Description=Caddy
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=caddy
+Group=caddy
+ExecStart=/usr/local/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div><p>Be sure to <code>chmod 644</code> the above file. create a user and group named <code>caddy</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo chmod 644 /etc/systemd/system/caddy.service
+
+sudo groupadd --system caddy
+sudo useradd --system --gid caddy caddy
+</code></pre></div><p>Move the compiled binary to <code>/usr/local/bin/caddy</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo chown root:root /usr/local/bin/caddy
+sudo chmod 755 /usr/local/bin/caddy
+</code></pre></div><h3 id="caddyfile">Caddyfile</h3>
 <p>Create a <code>Caddyfile</code> in <code>/etc/caddy/Caddyfile</code>. The following is an example configuration, and complete options and configuration can be checked in official <a href="https://caddyserver.com/docs/caddyfile-tutorial">docs</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*.homelab.tld {
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  tls YOUR_EMAIL
-</span></span><span class="line"><span class="cl">  tls {
-</span></span><span class="line"><span class="cl">     dns cloudflare API_KEY
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  @app1 host app1.homelab.tld
-</span></span><span class="line"><span class="cl">  @app2 host app2.homelab.tld
-</span></span><span class="line"><span class="cl">   
-</span></span><span class="line"><span class="cl">  handle @app1 {
-</span></span><span class="line"><span class="cl">     reverse_proxy 192.168.1.10:4000
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">   
-</span></span><span class="line"><span class="cl">  handle @app2 {
-</span></span><span class="line"><span class="cl">     reverse_proxy 192.168.1.11:3000
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  log {
-</span></span><span class="line"><span class="cl">     output file /var/log/caddy/access.log {
-</span></span><span class="line"><span class="cl">        roll_size 10mb
-</span></span><span class="line"><span class="cl">        roll_keep 5
-</span></span><span class="line"><span class="cl">        roll_keep_for 24h
-</span></span><span class="line"><span class="cl">     }
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></div><p>The above example assumes homelab.tld domain DNS records are managed by cloudflare. When starting caddy it does ACME DNS challenge using the cloudflare DNS plugin to verify the domain ownership and then gets a wildcard SSL certificate from letsencrypt automatically.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">*.homelab.tld {
+
+  tls YOUR_EMAIL
+  tls {
+     dns cloudflare API_KEY
+  }
+
+  @app1 host app1.homelab.tld
+  @app2 host app2.homelab.tld
+   
+  handle @app1 {
+     reverse_proxy 192.168.1.10:4000
+  }
+   
+  handle @app2 {
+     reverse_proxy 192.168.1.11:3000
+  }
+  
+  log {
+     output file /var/log/caddy/access.log {
+        roll_size 10mb
+        roll_keep 5
+        roll_keep_for 24h
+     }
+  }
+}
+</code></pre></div><p>The above example assumes homelab.tld domain DNS records are managed by cloudflare. When starting caddy it does ACME DNS challenge using the cloudflare DNS plugin to verify the domain ownership and then gets a wildcard SSL certificate from letsencrypt automatically.</p>
 <h3 id="reference">Reference</h3>
 <ol>
 <li><a href="https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148">https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148</a></li>
