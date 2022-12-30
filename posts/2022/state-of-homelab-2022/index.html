@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>State of Homelab 2022 | K&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920&#43;. pfsense is replaced by mikrotik hex S router.
+Main reason for downsizing are,">
+<meta name="author" content="Karthik">
+<link rel="canonical" href="https://vakarthik.com/posts/2022/state-of-homelab-2022/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://vakarthik.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vakarthik.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vakarthik.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="State of Homelab 2022" />
+<meta property="og:description" content="A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920&#43;. pfsense is replaced by mikrotik hex S router.
+Main reason for downsizing are," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vakarthik.com/posts/2022/state-of-homelab-2022/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-29T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-12-29T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
+
+<meta name="twitter:title" content="State of Homelab 2022"/>
+<meta name="twitter:description" content="A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920&#43;. pfsense is replaced by mikrotik hex S router.
+Main reason for downsizing are,"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://vakarthik.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "State of Homelab 2022",
+      "item": "https://vakarthik.com/posts/2022/state-of-homelab-2022/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "State of Homelab 2022",
+  "name": "State of Homelab 2022",
+  "description": "A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.\nMain reason for downsizing are,",
+  "keywords": [
+    
+  ],
+  "articleBody": "A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.\nMain reason for downsizing are,\nTime: I couldn’t find enough time to tinker my k3s cluster, due to my work. Things keep breaking and needed lot of time to fix it. Especially when your selfhosted DNS is not working and your whole house internet is gone!\nMoney: The server hardware is not cheap in India! we don’t have a r/homelabsales 😞. The cost of UPS, batteries, servers, racks are not cheap. Also used server hardware is not available other than metro cities. Things get even more complicated when your used server has a motherboard or power supply fault.\nSpace: We do not have garages or underground spaces like the ones we see in r/homelab. A seperate room is need for homelab. Trust me!\nBut the things i have learned during the time with those big, loud servers are something wouldn’t have been possible otherwise. I wish one day all the time, money and space constraints get resolved and i have a full 42U rack at home!\nUntil then, this is the current state of my homelab.\nSince the synology is limited in terms of memory and processing power, I haved moved a few stuff to the cloud. Using nextdns for family DNS and bitwarden premium instead of selfhosting vaultwarden. Not using plex / jellyfin.\nSo far so good. The only thing pending is a fool-proof automated backup system. Recently got a 1 TB storagebox from hetzner. Planning to sync between my devices and NAS, and borg-backup important stuff to hetzner box.\n",
+  "wordCount" : "319",
+  "inLanguage": "en",
+  "datePublished": "2022-12-29T00:00:00Z",
+  "dateModified": "2022-12-29T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Karthik"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vakarthik.com/posts/2022/state-of-homelab-2022/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "K's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vakarthik.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://vakarthik.com/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/photos/" title="Photos">
+                    <span>Photos</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/index.xml" title="Feed">
+                    <span>Feed</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      State of Homelab 2022
+    </h1>
+    <div class="post-meta"><span title='2022-12-29 00:00:00 +0000 UTC'>December 29, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Karthik
+
+</div>
+  </header> 
+  <div class="post-content"><p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/c_scale,w_900/v1672407925/Homelab/PXL_20221230_134142513.jpg" alt=""  title="Homelab"  />
+</p>
+<p>A lot has changed in my homelab this year. Most folks in <a href="https://www.reddit.com/r/homelab">r/homelab</a> start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.</p>
+<p>Main reason for downsizing are,</p>
+<h4 id="time">Time:<a hidden class="anchor" aria-hidden="true" href="#time">#</a></h4>
+<p>I couldn&rsquo;t find enough time to tinker my k3s cluster, due to my work. Things keep breaking and needed lot of time to fix it. Especially when your selfhosted DNS is not working and your whole house internet is gone!</p>
+<h4 id="money">Money:<a hidden class="anchor" aria-hidden="true" href="#money">#</a></h4>
+<p>The server hardware is not cheap in India! we don&rsquo;t have a <a href="https://www.reddit.com/r/homelabsales/">r/homelabsales</a> 😞. The cost of UPS, batteries, servers, racks are not cheap. Also used server hardware is not available other than metro cities. Things get even more complicated when your used server has a motherboard or power supply fault.</p>
+<h4 id="space">Space:<a hidden class="anchor" aria-hidden="true" href="#space">#</a></h4>
+<p>We do not have garages or underground spaces like the ones we see in <a href="https://www.reddit.com/r/homelab">r/homelab</a>. A seperate room is need for homelab. Trust me!</p>
+<p>But the things i have learned during the time with those big, loud servers are something wouldn&rsquo;t have been possible otherwise. I wish one day all the time, money and space constraints get resolved and i have a full 42U rack at home!</p>
+<p>Until then, this is the current state of my homelab.</p>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1672407925/Homelab/homelab-2022.png" alt=""  title="Homelab Representation"  />
+</p>
+<p>Since the synology is limited in terms of memory and processing power, I haved moved a few stuff to the cloud. Using nextdns for family DNS and bitwarden premium instead of selfhosting vaultwarden. Not using plex / jellyfin.</p>
+<p>So far so good. The only thing pending is a fool-proof automated backup system. Recently got a 1 TB storagebox from <a href="https://www.hetzner.com/storage/storage-box">hetzner</a>. Planning to sync between my devices and NAS, and borg-backup important stuff to hetzner box.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="vakarthik/k-blog"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -9,7 +9,34 @@
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 19 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>State of Homelab 2022</title>
+      <link>https://vakarthik.com/posts/2022/state-of-homelab-2022/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://vakarthik.com/posts/2022/state-of-homelab-2022/</guid>
+      <description>A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.
+Main reason for downsizing are,</description>
+      <content:encoded><![CDATA[<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/c_scale,w_900/v1672407925/Homelab/PXL_20221230_134142513.jpg" alt=""  title="Homelab"  />
+</p>
+<p>A lot has changed in my homelab this year. Most folks in <a href="https://www.reddit.com/r/homelab">r/homelab</a> start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.</p>
+<p>Main reason for downsizing are,</p>
+<h4 id="time">Time:</h4>
+<p>I couldn&rsquo;t find enough time to tinker my k3s cluster, due to my work. Things keep breaking and needed lot of time to fix it. Especially when your selfhosted DNS is not working and your whole house internet is gone!</p>
+<h4 id="money">Money:</h4>
+<p>The server hardware is not cheap in India! we don&rsquo;t have a <a href="https://www.reddit.com/r/homelabsales/">r/homelabsales</a> 😞. The cost of UPS, batteries, servers, racks are not cheap. Also used server hardware is not available other than metro cities. Things get even more complicated when your used server has a motherboard or power supply fault.</p>
+<h4 id="space">Space:</h4>
+<p>We do not have garages or underground spaces like the ones we see in <a href="https://www.reddit.com/r/homelab">r/homelab</a>. A seperate room is need for homelab. Trust me!</p>
+<p>But the things i have learned during the time with those big, loud servers are something wouldn&rsquo;t have been possible otherwise. I wish one day all the time, money and space constraints get resolved and i have a full 42U rack at home!</p>
+<p>Until then, this is the current state of my homelab.</p>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1672407925/Homelab/homelab-2022.png" alt=""  title="Homelab Representation"  />
+</p>
+<p>Since the synology is limited in terms of memory and processing power, I haved moved a few stuff to the cloud. Using nextdns for family DNS and bitwarden premium instead of selfhosting vaultwarden. Not using plex / jellyfin.</p>
+<p>So far so good. The only thing pending is a fool-proof automated backup system. Recently got a 1 TB storagebox from <a href="https://www.hetzner.com/storage/storage-box">hetzner</a>. Planning to sync between my devices and NAS, and borg-backup important stuff to hetzner box.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>How I Downloaded IE for 2k</title>
       <link>https://vakarthik.com/posts/2022/how-i-downloaded-internet-explorer-for-2k/</link>
