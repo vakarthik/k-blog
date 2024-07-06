@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>State of Homelab 2022 | K&#39;s blog</title>
+<title>Graceful Shutdown of Homelab Servers | K&#39;s blog</title>
 <meta name="keywords" content="">
-<meta name="description" content="A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920&#43;. pfsense is replaced by mikrotik hex S router.
-Main reason for downsizing are,">
+<meta name="description" content="The Problem Installing nut-server on pi Configuring proxmox hosts Tweaking Configuration Testing it out Reference Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)
+rpi4cluster
+Just me and Opensource- Youtube
+Technotim - youtube
+https://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/">
 <meta name="author" content="Karthik">
-<link rel="canonical" href="https://vakarthik.com/posts/2022/state-of-homelab-2022/">
+<link rel="canonical" href="http://localhost:1313/posts/2021/graceful-shutdown-homelab/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://vakarthik.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://vakarthik.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://vakarthik.com/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2021/graceful-shutdown-homelab/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,22 +59,32 @@ Main reason for downsizing are,">
         }
 
     </style>
-</noscript><meta property="og:title" content="State of Homelab 2022" />
-<meta property="og:description" content="A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920&#43;. pfsense is replaced by mikrotik hex S router.
-Main reason for downsizing are," />
+</noscript>
+  
+
+<meta property="og:title" content="Graceful Shutdown of Homelab Servers" />
+<meta property="og:description" content="The Problem Installing nut-server on pi Configuring proxmox hosts Tweaking Configuration Testing it out Reference Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)
+rpi4cluster
+Just me and Opensource- Youtube
+Technotim - youtube
+https://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vakarthik.com/posts/2022/state-of-homelab-2022/" />
-<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta property="og:url" content="http://localhost:1313/posts/2021/graceful-shutdown-homelab/" />
+<meta property="og:image" content="http://localhost:1313/papermod-cover.png" />
 <meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-12-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-29T00:00:00+00:00" />
+<meta property="article:published_time" content="2021-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-20T00:00:00+00:00" />
+<meta property="og:see_also" content="http://localhost:1313/posts/2021/moving-to-calyxos-iphone/" /><meta property="og:see_also" content="http://localhost:1313/posts/2021/homelab-2021/" /><meta property="og:see_also" content="http://localhost:1313/posts/2021/compiling-and-building-caddy/" /><meta property="og:see_also" content="http://localhost:1313/posts/2019/homelab-2019/" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
-<meta name="twitter:title" content="State of Homelab 2022"/>
-<meta name="twitter:description" content="A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920&#43;. pfsense is replaced by mikrotik hex S router.
-Main reason for downsizing are,"/>
+<meta name="twitter:image" content="http://localhost:1313/papermod-cover.png" />
+<meta name="twitter:title" content="Graceful Shutdown of Homelab Servers"/>
+<meta name="twitter:description" content="The Problem Installing nut-server on pi Configuring proxmox hosts Tweaking Configuration Testing it out Reference Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)
+rpi4cluster
+Just me and Opensource- Youtube
+Technotim - youtube
+https://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/"/>
 
 
 <script type="application/ld+json">
@@ -82,13 +96,13 @@ Main reason for downsizing are,"/>
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://vakarthik.com/posts/"
+      "item": "http://localhost:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "State of Homelab 2022",
-      "item": "https://vakarthik.com/posts/2022/state-of-homelab-2022/"
+      "name": "Graceful Shutdown of Homelab Servers",
+      "item": "http://localhost:1313/posts/2021/graceful-shutdown-homelab/"
     }
   ]
 }
@@ -97,31 +111,31 @@ Main reason for downsizing are,"/>
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "State of Homelab 2022",
-  "name": "State of Homelab 2022",
-  "description": "A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.\nMain reason for downsizing are,",
+  "headline": "Graceful Shutdown of Homelab Servers",
+  "name": "Graceful Shutdown of Homelab Servers",
+  "description": "The Problem Installing nut-server on pi Configuring proxmox hosts Tweaking Configuration Testing it out Reference Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)\nrpi4cluster\nJust me and Opensource- Youtube\nTechnotim - youtube\nhttps://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/",
   "keywords": [
     
   ],
-  "articleBody": "A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.\nMain reason for downsizing are,\nTime: I couldn’t find enough time to tinker my k3s cluster, due to my work. Things keep breaking and needed lot of time to fix it. Especially when your selfhosted DNS is not working and your whole house internet is gone!\nMoney: The server hardware is not cheap in India! we don’t have a r/homelabsales 😞. The cost of UPS, batteries, servers, racks are not cheap. Also used server hardware is not available other than metro cities. Things get even more complicated when your used server has a motherboard or power supply fault.\nSpace: We do not have garages or underground spaces like the ones we see in r/homelab. A seperate room is need for homelab. Trust me!\nBut the things i have learned during the time with those big, loud servers are something wouldn’t have been possible otherwise. I wish one day all the time, money and space constraints get resolved and i have a full 42U rack at home!\nUntil then, this is the current state of my homelab.\nSince the synology is limited in terms of memory and processing power, I haved moved a few stuff to the cloud. Using nextdns for family DNS and bitwarden premium instead of selfhosting vaultwarden. Not using plex / jellyfin.\nSo far so good. The only thing pending is a fool-proof automated backup system. Recently got a 1 TB storagebox from hetzner. Planning to sync between my devices and NAS, and borg-backup important stuff to hetzner box.\n",
-  "wordCount" : "319",
+  "articleBody": "The Problem Installing nut-server on pi Configuring proxmox hosts Tweaking Configuration Testing it out Reference Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)\nrpi4cluster\nJust me and Opensource- Youtube\nTechnotim - youtube\nhttps://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/\n",
+  "wordCount" : "44",
   "inLanguage": "en",
-  "image": "https://vakarthik.com/papermod-cover.png","datePublished": "2022-12-29T00:00:00Z",
-  "dateModified": "2022-12-29T00:00:00Z",
+  "image": "http://localhost:1313/papermod-cover.png","datePublished": "2021-06-20T00:00:00Z",
+  "dateModified": "2021-06-20T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Karthik"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://vakarthik.com/posts/2022/state-of-homelab-2022/"
+    "@id": "http://localhost:1313/posts/2021/graceful-shutdown-homelab/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "K's blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://vakarthik.com/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -143,7 +157,7 @@ Main reason for downsizing are,"/>
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -169,27 +183,27 @@ Main reason for downsizing are,"/>
         </div>
         <ul id="menu">
             <li>
-                <a href="https://vakarthik.com/blog/" title="Blog">
+                <a href="http://localhost:1313/blog/" title="Blog">
                     <span>Blog</span>
                 </a>
             </li>
             <li>
-                <a href="https://vakarthik.com/photos/" title="Photos">
+                <a href="http://localhost:1313/photos/" title="Photos">
                     <span>Photos</span>
                 </a>
             </li>
             <li>
-                <a href="https://vakarthik.com/about/" title="About">
+                <a href="http://localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="https://vakarthik.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://vakarthik.com/index.xml" title="Feed">
+                <a href="http://localhost:1313/index.xml" title="Feed">
                     <span>Feed</span>
                 </a>
             </li>
@@ -202,28 +216,53 @@ Main reason for downsizing are,"/>
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      State of Homelab 2022
+      Graceful Shutdown of Homelab Servers
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
     </h1>
-    <div class="post-meta"><span title='2022-12-29 00:00:00 +0000 UTC'>December 29, 2022</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Karthik
+    <div class="post-meta"><span title='2021-06-20 00:00:00 +0000 UTC'>June 20, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Karthik
 
 </div>
-  </header> 
-  <div class="post-content"><p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/c_scale,w_900/v1672407925/Homelab/PXL_20221230_134142513.jpg" alt=""  title="Homelab"  />
-</p>
-<p>A lot has changed in my homelab this year. Most folks in <a href="https://www.reddit.com/r/homelab">r/homelab</a> start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.</p>
-<p>Main reason for downsizing are,</p>
-<h4 id="time">Time:<a hidden class="anchor" aria-hidden="true" href="#time">#</a></h4>
-<p>I couldn&rsquo;t find enough time to tinker my k3s cluster, due to my work. Things keep breaking and needed lot of time to fix it. Especially when your selfhosted DNS is not working and your whole house internet is gone!</p>
-<h4 id="money">Money:<a hidden class="anchor" aria-hidden="true" href="#money">#</a></h4>
-<p>The server hardware is not cheap in India! we don&rsquo;t have a <a href="https://www.reddit.com/r/homelabsales/">r/homelabsales</a> 😞. The cost of UPS, batteries, servers, racks are not cheap. Also used server hardware is not available other than metro cities. Things get even more complicated when your used server has a motherboard or power supply fault.</p>
-<h4 id="space">Space:<a hidden class="anchor" aria-hidden="true" href="#space">#</a></h4>
-<p>We do not have garages or underground spaces like the ones we see in <a href="https://www.reddit.com/r/homelab">r/homelab</a>. A seperate room is need for homelab. Trust me!</p>
-<p>But the things i have learned during the time with those big, loud servers are something wouldn&rsquo;t have been possible otherwise. I wish one day all the time, money and space constraints get resolved and i have a full 42U rack at home!</p>
-<p>Until then, this is the current state of my homelab.</p>
-<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1672407925/Homelab/homelab-2022.png" alt=""  title="Homelab Representation"  />
-</p>
-<p>Since the synology is limited in terms of memory and processing power, I haved moved a few stuff to the cloud. Using nextdns for family DNS and bitwarden premium instead of selfhosting vaultwarden. Not using plex / jellyfin.</p>
-<p>So far so good. The only thing pending is a fool-proof automated backup system. Recently got a 1 TB storagebox from <a href="https://www.hetzner.com/storage/storage-box">hetzner</a>. Planning to sync between my devices and NAS, and borg-backup important stuff to hetzner box.</p>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#the-problem" aria-label="The Problem">The Problem</a></li>
+                <li>
+                    <a href="#installing-nut-server-on-pi" aria-label="Installing nut-server on pi">Installing nut-server on pi</a></li>
+                <li>
+                    <a href="#configuring-proxmox-hosts" aria-label="Configuring proxmox hosts">Configuring proxmox hosts</a></li>
+                <li>
+                    <a href="#tweaking-configuration" aria-label="Tweaking Configuration">Tweaking Configuration</a></li>
+                <li>
+                    <a href="#testing-it-out" aria-label="Testing it out">Testing it out</a></li>
+                <li>
+                    <a href="#reference" aria-label="Reference">Reference</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="the-problem">The Problem<a hidden class="anchor" aria-hidden="true" href="#the-problem">#</a></h3>
+<h3 id="installing-nut-server-on-pi">Installing nut-server on pi<a hidden class="anchor" aria-hidden="true" href="#installing-nut-server-on-pi">#</a></h3>
+<h3 id="configuring-proxmox-hosts">Configuring proxmox hosts<a hidden class="anchor" aria-hidden="true" href="#configuring-proxmox-hosts">#</a></h3>
+<h3 id="tweaking-configuration">Tweaking Configuration<a hidden class="anchor" aria-hidden="true" href="#tweaking-configuration">#</a></h3>
+<h3 id="testing-it-out">Testing it out<a hidden class="anchor" aria-hidden="true" href="#testing-it-out">#</a></h3>
+<h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
+<p>Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)</p>
+<p><a href="https://hackernoon.com/how-to-shutdown-your-servers-in-case-of-power-failure-ups-nut-co-34d22a08e92">rpi4cluster</a></p>
+<p><a href="https://blog.entek.org.uk/notes/2021/01/10/ups-monitoring-and-auto-shut-down-with-nut.html">Just me and Opensource- Youtube</a></p>
+<p><a href="https://wiki.ipfire.org/addons/nut/detailed">Technotim - youtube</a></p>
+<p><a href="https://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/">https://dan.langille.org/2020/09/10/nut-testing-the-shutdown-mechanism/</a></p>
 
 
   </div>
@@ -243,7 +282,7 @@ Main reason for downsizing are,"/>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+        <span>&copy; 2024 <a href="http://localhost:1313/">K&#39;s blog</a></span> · 
 
     <span>
         Powered by

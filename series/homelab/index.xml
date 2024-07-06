@@ -5,16 +5,18 @@
     <link>https://vakarthik.com/series/homelab/</link>
     <description>Recent content in Homelab on K&#39;s blog</description>
     <image>
+      <title>K&#39;s blog</title>
       <url>https://vakarthik.com/papermod-cover.png</url>
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 22 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/series/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.92.2</generator>
+    <language></language>
+    <lastBuildDate>Wed, 22 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vakarthik.com/series/homelab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Moving to CalyxOS from iPhone/iOS</title>
       <link>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</link>
       <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</guid>
       <description>Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.
 I wanted to move to a privacy friendly OS.</description>
@@ -89,12 +91,10 @@ Termux - Terminal emulator</p>
 <p>Hope there is some useful information for you above. I hope one day i will clear all my digital tracks and use OS like graphene as a daily driver. 😃</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Homelab Upgrade 2021</title>
       <link>https://vakarthik.com/posts/2021/homelab-2021/</link>
       <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2021/homelab-2021/</guid>
       <description>My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!
 Hardware Upgrades Many say olx is a bad place and full of scammers.</description>
@@ -165,12 +165,10 @@ myWidget.render();
 <p><a href="https://www.youtube.com/channel/UCOk-gHyjcWZNj3Br4oxwh0A">Technotim - youtube</a></p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>HTTPS for Homelab using Caddy and ACME DNS</title>
       <link>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</link>
       <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</guid>
       <description>HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.
 Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps.</description>
@@ -279,12 +277,10 @@ sudo chmod 755 /usr/local/bin/caddy
 <p><a href="https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/">https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/</a></p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Homelab v1</title>
       <link>https://vakarthik.com/posts/2019/homelab-2019/</link>
       <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2019/homelab-2019/</guid>
       <description>Intro ping 127.0.0.1
 There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year.</description>
@@ -363,6 +359,5 @@ Server &amp; Rack:</p>
 <p><a href="https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/">https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/</a></p>
 ]]></content:encoded>
     </item>
-    
   </channel>
 </rss>

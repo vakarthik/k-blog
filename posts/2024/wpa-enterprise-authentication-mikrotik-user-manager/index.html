@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>WPA Enterprise Authentication Using Mikrotik&#39;s User-Manager Package | K&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points.">
+<meta name="author" content="Karthik">
+<link rel="canonical" href="https://vakarthik.com/posts/2024/wpa-enterprise-authentication-mikrotik-user-manager/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://vakarthik.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://vakarthik.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://vakarthik.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="WPA Enterprise Authentication Using Mikrotik&#39;s User-Manager Package" />
+<meta property="og:description" content="WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vakarthik.com/posts/2024/wpa-enterprise-authentication-mikrotik-user-manager/" />
+<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-07-05T00:00:00+00:00" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta name="twitter:title" content="WPA Enterprise Authentication Using Mikrotik&#39;s User-Manager Package"/>
+<meta name="twitter:description" content="WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://vakarthik.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "WPA Enterprise Authentication Using Mikrotik's User-Manager Package",
+      "item": "https://vakarthik.com/posts/2024/wpa-enterprise-authentication-mikrotik-user-manager/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "WPA Enterprise Authentication Using Mikrotik's User-Manager Package",
+  "name": "WPA Enterprise Authentication Using Mikrotik\u0027s User-Manager Package",
+  "description": "WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points.",
+  "keywords": [
+    
+  ],
+  "articleBody": "WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points.\nNote: do not touch the default RADIUS option in miktoik. We will do everything from user-manager package.\n1. User-Manager Package Download User Manager Package from mikrotik site (double check the version and architecture) and install it. Complete documentation about the package is in mikrotik site. In short it is a user manager with inbuilt RADIUS server.\nCheck out the usage of the package in-depth. It has ton of other features which I have not mentioned.\n2. Generating the Required Certificates Create CA, certificate for user-manager and user from routeros terminal.\n# Generating a Certificate Authority /certificate add name=radius-ca common-name=\"RADIUS CA\" key-size=secp384r1 digest-algorithm=sha384 days-valid=1825 key-usage=key-cert-sign,crl-sign sign radius-ca ca-crl-host=radius.spacex # Generating a server certificate for User Manager add name=userman-cert common-name=radius.spacex subject-alt-name=DNS:radius.spacex key-size=secp384r1 digest-algorithm=sha384 days-valid=800 key-usage=tls-server sign userman-cert ca=radius-ca # Generating a client certificate add name=k-client-cert common-name=k@spacex key-usage=tls-client days-valid=800 key-size=secp384r1 digest-algorithm=sha384 sign k-client-cert ca=radius-ca # Exporting the public key of the CA as well as the generated client private key and certificate for distribution to client devices export-certificate radius-ca file-name=radius-ca # A passphrase is needed for the export to include the private key export-certificate k-client-cert type=pkcs12 export-passphrase=\"your secure pass phrase\" # Please check this for exporting in android - https://stackoverflow.com/a/73512646 # the -legacy flag is important #https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5 #Important: Read the above link throughly. Do not Skip. The common-name, in my example .spacex (.mikrotik.test) should be present in user certificates. #Otherwise you will break heads, it just won't work. 3. Configuring User Manager   Profiles tab: Create a default profile from GUI / terminal if not already present.\n  User Groups tab: Create a new user group with certificate-auth as name and choose only EAP-TLS as authentication method. (you can also choose other methods which require a password also)\n  Users tab: Create a new user k@spacex with group certificate-auth.\n  Routers tab: In settings tab check enabled and choose our userman-cert. Leave ports to default.\n  Routers tab: Add a new router. Enter a name and IP address of yor access point. Remember the shared secret, which you will need to enter in your access point. (you can add as many as you want)\n  4. Configure Access Point   These widely vary from software you are using. But basically you need to choose WPA2-Enterprise authentication in your access point to enter RADIUS server IP (IP of mikrotik router) and shared-secret.\n  I have tested it in my tp-link EAP225 running on both tp-link firmware and open-wrt and works fine.\n  5. Configure Clients Add the k-client-cert or whatever name you have give to clients like your mobile and windows. Just a simple search will show many tutorials on how to do it. I have not had any problems expect in android which needed the certificate in legacy p12 format (refer step-2).\nDone!\nConnect the wifi SSID, when prompted choose the certificate installed in client.\n6. Reference: https://help.mikrotik.com/docs/display/ROS/User+Manager\nhttps://prog.world/how-to-make-wi-fi-mikrotik-and-tp-link-friends-using-radius/\nhttps://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5\nhttps://github.com/multiduplikator/mikrotik_EAP\nhttps://www.tp-link.com/us/support/faq/500/\nhttps://openwrt.org/docs/guide-user/network/wifi/encryption (wpad package in open-wrt for WPA-enterprise. you need to remove all wpad-* packages and install just wpad)\n",
+  "wordCount" : "566",
+  "inLanguage": "en",
+  "image": "https://vakarthik.com/papermod-cover.png","datePublished": "2024-07-05T00:00:00Z",
+  "dateModified": "2024-07-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Karthik"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://vakarthik.com/posts/2024/wpa-enterprise-authentication-mikrotik-user-manager/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "K's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://vakarthik.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://vakarthik.com/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/photos/" title="Photos">
+                    <span>Photos</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://vakarthik.com/index.xml" title="Feed">
+                    <span>Feed</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      WPA Enterprise Authentication Using Mikrotik&#39;s User-Manager Package
+    </h1>
+    <div class="post-meta"><span title='2024-07-05 00:00:00 +0000 UTC'>July 5, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Karthik
+
+</div>
+  </header> 
+  <div class="post-content"><p>WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points.</p>
+<p>Note: do not touch the default RADIUS option in miktoik. We will do everything from user-manager package.</p>
+<h3 id="1-user-manager-package">1. User-Manager Package<a hidden class="anchor" aria-hidden="true" href="#1-user-manager-package">#</a></h3>
+<p>Download User Manager Package from <a href="https://mikrotik.com/download/archive">mikrotik site</a> (double check the version and architecture) and install it. Complete documentation about the package is in <a href="https://help.mikrotik.com/docs/display/ROS/User+Manager">mikrotik site</a>. In short it is a user manager with inbuilt RADIUS server.</p>
+<p>Check out the usage of the package in-depth. It has ton of other features which I have not mentioned.</p>
+<h3 id="2-generating-the-required-certificates">2. Generating the Required Certificates<a hidden class="anchor" aria-hidden="true" href="#2-generating-the-required-certificates">#</a></h3>
+<p>Create CA, certificate for user-manager and user from routeros terminal.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># Generating a Certificate Authority
+/certificate
+add name=radius-ca common-name=&#34;RADIUS CA&#34; key-size=secp384r1 digest-algorithm=sha384 days-valid=1825 key-usage=key-cert-sign,crl-sign
+sign radius-ca ca-crl-host=radius.spacex
+
+# Generating a server certificate for User Manager
+add name=userman-cert common-name=radius.spacex subject-alt-name=DNS:radius.spacex key-size=secp384r1 digest-algorithm=sha384 days-valid=800 key-usage=tls-server
+sign userman-cert ca=radius-ca
+
+# Generating a client certificate
+add name=k-client-cert common-name=k@spacex key-usage=tls-client days-valid=800 key-size=secp384r1 digest-algorithm=sha384
+sign k-client-cert ca=radius-ca
+
+# Exporting the public key of the CA as well as the generated client private key and certificate for distribution to client devices
+export-certificate radius-ca file-name=radius-ca
+
+# A passphrase is needed for the export to include the private key
+export-certificate k-client-cert type=pkcs12 export-passphrase=&#34;your secure pass phrase&#34;
+
+# Please check this for exporting in android - https://stackoverflow.com/a/73512646
+# the -legacy flag is important
+#https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5
+#Important: Read the above link throughly. Do not Skip. The common-name, in my example .spacex (.mikrotik.test) should be present in user certificates. 
+#Otherwise you will break heads, it just won&#39;t work.
+</code></pre></div><h3 id="3-configuring-user-manager">3. Configuring User Manager<a hidden class="anchor" aria-hidden="true" href="#3-configuring-user-manager">#</a></h3>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1720183019/Homelab/ROS.png" alt=""  title="Screenshot of ROS settings"  />
+</p>
+<ul>
+<li>
+<p>Profiles tab: Create a default profile from GUI / terminal if not already present.</p>
+</li>
+<li>
+<p>User Groups tab: Create a new user group with <code>certificate-auth</code> as name and choose only <code>EAP-TLS</code> as authentication method. (you can also choose other methods which require a password also)</p>
+</li>
+<li>
+<p>Users tab: Create a new user <code>k@spacex</code> with group <code>certificate-auth</code>.</p>
+</li>
+<li>
+<p>Routers tab: In settings tab check <code>enabled</code> and choose our <code>userman-cert</code>. Leave ports to default.</p>
+</li>
+<li>
+<p>Routers tab: Add a new router. Enter a name and IP address of yor access point. Remember the shared secret, which you will need to enter in your access point. (you can add as many as you want)</p>
+</li>
+</ul>
+<h3 id="4-configure-access-point">4. Configure Access Point<a hidden class="anchor" aria-hidden="true" href="#4-configure-access-point">#</a></h3>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1720183177/Homelab/open-wrt.png" alt=""  title="Screenshot from Open-Wrt Settings"  />
+</p>
+<ul>
+<li>
+<p>These widely vary from software you are using. But basically you need to choose <code>WPA2-Enterprise</code> authentication in your access point to enter RADIUS server IP (IP of mikrotik router) and shared-secret.</p>
+</li>
+<li>
+<p>I have tested it in my tp-link EAP225 running on both tp-link firmware and open-wrt and works fine.</p>
+</li>
+</ul>
+<h3 id="5-configure-clients">5. Configure Clients<a hidden class="anchor" aria-hidden="true" href="#5-configure-clients">#</a></h3>
+<p>Add the <code>k-client-cert</code> or whatever name you have give to clients like your mobile and windows. Just a simple search will show many tutorials on how to do it. I have not had any problems expect in android which needed the certificate in <code>legacy p12</code> format (refer step-2).</p>
+<p>Done!</p>
+<p>Connect the wifi SSID, when prompted choose the certificate installed in client.</p>
+<h3 id="6-reference">6. Reference:<a hidden class="anchor" aria-hidden="true" href="#6-reference">#</a></h3>
+<p><a href="https://help.mikrotik.com/docs/display/ROS/User+Manager">https://help.mikrotik.com/docs/display/ROS/User+Manager</a></p>
+<p><a href="https://prog.world/how-to-make-wi-fi-mikrotik-and-tp-link-friends-using-radius/">https://prog.world/how-to-make-wi-fi-mikrotik-and-tp-link-friends-using-radius/</a></p>
+<p><a href="https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5">https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5</a></p>
+<p><a href="https://github.com/multiduplikator/mikrotik_EAP">https://github.com/multiduplikator/mikrotik_EAP</a></p>
+<p><a href="https://www.tp-link.com/us/support/faq/500/">https://www.tp-link.com/us/support/faq/500/</a></p>
+<p><a href="https://openwrt.org/docs/guide-user/network/wifi/encryption">https://openwrt.org/docs/guide-user/network/wifi/encryption</a>
+(wpad package in open-wrt for WPA-enterprise. you need to remove all wpad-* packages and install just wpad)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="vakarthik/k-blog"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

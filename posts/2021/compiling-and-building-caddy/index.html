@@ -12,7 +12,6 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
 <meta name="author" content="Karthik">
 <link rel="canonical" href="https://vakarthik.com/posts/2021/compiling-and-building-caddy/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://vakarthik.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
@@ -37,7 +36,7 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -60,14 +59,16 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
 <meta property="og:description" content="HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.
 Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vakarthik.com/posts/2021/compiling-and-building-caddy/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-02-06T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-02-06T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://vakarthik.com/posts/2021/compiling-and-building-caddy/" />
+<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-06T00:00:00+00:00" />
 <meta property="og:see_also" content="https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/" /><meta property="og:see_also" content="https://vakarthik.com/posts/2021/homelab-2021/" /><meta property="og:see_also" content="https://vakarthik.com/posts/2019/homelab-2019/" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
 <meta name="twitter:title" content="HTTPS for Homelab using Caddy and ACME DNS"/>
 <meta name="twitter:description" content="HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.
 Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps."/>
@@ -77,16 +78,16 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://vakarthik.com/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "HTTPS for Homelab using Caddy and ACME DNS",
       "item": "https://vakarthik.com/posts/2021/compiling-and-building-caddy/"
     }
@@ -106,7 +107,7 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
   "articleBody": "HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.\nThen the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps. I have found the configuration is much easier compared to other reverse proxies out there.\nCaddy will serve all content using HTTPS by default with its self signed SSL certificates. But i have found that all browsers do not play well and throw a warning. To make the browsers trust the self-signed SSL, you need to add the root certificate to the respective OS and browser cert store. It is very difficult to do it manually, especially for mobile devices. So I use letsencrypt wilcard certificate from my unused domain for homelab.\nLetsencrypt will issue a free ssl certificate which is trusted by all browsers. You have to prove the domain ownership to letsencrypt, that’s where http and DNS challenge comes into play. Read more about it here.\nBy default the caddy binary does not have cloudflare-dns plugin for acme DNS challenge. This is important because all my homelab services are not exposed to internet and there is no way http challenge will work.\nxcaddy is tool for compiling and installing caddy from source. (please note that this tool is still under development, but i have found it to be working without any issue)\nPlease note that to proceed you should have a VM or Container for playing around. I have a dedicated ubuntu container running for reverse proxy.\nDownoad and Install Go Go language is needed for compiling and installing caddy.\n## download go https://golang.org/doc/install wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz ## extract sudo tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz ## add PATH env variable export PATH=$PATH:/usr/local/go/bin ## reboot check if go is installed go version Version is 1.16.3 as of writing this, so please change accordingly.\nDownload and install xcaddy Proceed to latest xcaddy releases page and download the *.deb package. Version is 0.1.9 as of writing this, so please change accordingly.\nwget https://github.com/caddyserver/xcaddy/releases/download/v0.1.9/xcaddy_0.1.9_linux_arm64.deb sudo dpkg -i xcaddy_0.1.9_linux_arm64.deb Other install methods are also listed in the github page.\nBuild Caddy with optional plugins We have downloaded pre-requesites and now we will build caddy with cloudflare-dns plugin. I have added webdav just for this tutorial purpose, feel free to delete it if you are not using it. There are many other plugins, please search and feel free to include the ones you like.\nxcaddy build \\ --with github.com/caddy-dns/cloudflare --with github.com/mholt/caddy-webdav The above command will download the caddy source and compile and create a caddy binary in the folder where you run the command.\nStarting caddy service The compiled binary file needs to be moved to correct location and a service files needs to be created.\nCreate a file /etc/systemd/system/caddy.service with the following contents.\n[Unit] Description=Caddy Documentation=https://caddyserver.com/docs/ After=network.target network-online.target Requires=network-online.target [Service] User=caddy Group=caddy ExecStart=/usr/local/bin/caddy run --environ --config /etc/caddy/Caddyfile ExecReload=/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile TimeoutStopSec=5s LimitNOFILE=1048576 LimitNPROC=512 PrivateTmp=true ProtectSystem=full AmbientCapabilities=CAP_NET_BIND_SERVICE [Install] WantedBy=multi-user.target Be sure to chmod 644 the above file. create a user and group named caddy\nsudo chmod 644 /etc/systemd/system/caddy.service sudo groupadd --system caddy sudo useradd --system --gid caddy caddy Move the compiled binary to /usr/local/bin/caddy\nsudo chown root:root /usr/local/bin/caddy sudo chmod 755 /usr/local/bin/caddy Caddyfile Create a Caddyfile in /etc/caddy/Caddyfile. The following is an example configuration, and complete options and configuration can be checked in official docs.\n*.homelab.tld { tls YOUR_EMAIL tls { dns cloudflare API_KEY } @app1 host app1.homelab.tld @app2 host app2.homelab.tld handle @app1 { reverse_proxy 192.168.1.10:4000 } handle @app2 { reverse_proxy 192.168.1.11:3000 } log { output file /var/log/caddy/access.log { roll_size 10mb roll_keep 5 roll_keep_for 24h } } } The above example assumes homelab.tld domain DNS records are managed by cloudflare. When starting caddy it does ACME DNS challenge using the cloudflare DNS plugin to verify the domain ownership and then gets a wildcard SSL certificate from letsencrypt automatically.\nReference  https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148 https://www.digitalocean.com/community/tutorials/how-to-host-a-website-with-caddy-on-ubuntu-18-04 https://www.linode.com/docs/guides/compile-caddy-from-source/ https://caddyserver.com/docs/caddyfile/directives/tls  For more adventure, try your own CA.\nhttps://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/\n",
   "wordCount" : "696",
   "inLanguage": "en",
-  "datePublished": "2021-02-06T00:00:00Z",
+  "image": "https://vakarthik.com/papermod-cover.png","datePublished": "2021-02-06T00:00:00Z",
   "dateModified": "2021-02-06T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -146,12 +147,12 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
             <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -201,7 +202,7 @@ Then the hunt for reverse proxies started and i settled down with caddy after tr
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       HTTPS for Homelab using Caddy and ACME DNS
     </h1>
     <div class="post-meta"><span title='2021-02-06 00:00:00 +0000 UTC'>February 6, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Karthik
@@ -356,7 +357,8 @@ sudo chmod 755 /usr/local/bin/caddy
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

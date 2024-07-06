@@ -36,7 +36,7 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -58,11 +58,13 @@
 </noscript><meta property="og:title" content="Posts" />
 <meta property="og:description" content="Personal website and blog" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://vakarthik.com/posts/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/>
+<meta property="og:url" content="https://vakarthik.com/posts/" />
+<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
 
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Personal website and blog"/>
 
@@ -71,10 +73,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://vakarthik.com/posts/"
     }
@@ -101,12 +103,12 @@
             <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -160,7 +162,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Homelab v1
+    <h2 class="entry-hint-parent">HTTPS for Homelab using Caddy and ACME DNS
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.
+Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-02-06 00:00:00 +0000 UTC'>February 6, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Karthik</footer>
+  <a class="entry-link" aria-label="post link to HTTPS for Homelab using Caddy and ACME DNS" href="https://vakarthik.com/posts/2021/compiling-and-building-caddy/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Homelab v1
     </h2>
   </header>
   <div class="entry-content">
@@ -172,13 +187,16 @@ There are some interests which do not change! I used to write html and css in co
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://vakarthik.com/posts/">« Prev</a>
+    <a class="prev" href="https://vakarthik.com/posts/">
+      «&nbsp;Prev&nbsp;
+    </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

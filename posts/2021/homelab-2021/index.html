@@ -12,7 +12,6 @@ Hardware Upgrades Many say olx is a bad place and full of scammers.">
 <meta name="author" content="Karthik">
 <link rel="canonical" href="https://vakarthik.com/posts/2021/homelab-2021/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://vakarthik.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
@@ -37,7 +36,7 @@ Hardware Upgrades Many say olx is a bad place and full of scammers.">
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -60,14 +59,16 @@ Hardware Upgrades Many say olx is a bad place and full of scammers.">
 <meta property="og:description" content="My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!
 Hardware Upgrades Many say olx is a bad place and full of scammers." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vakarthik.com/posts/2021/homelab-2021/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-20T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-06-20T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://vakarthik.com/posts/2021/homelab-2021/" />
+<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-20T00:00:00+00:00" />
 <meta property="og:see_also" content="https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/" /><meta property="og:see_also" content="https://vakarthik.com/posts/2021/compiling-and-building-caddy/" /><meta property="og:see_also" content="https://vakarthik.com/posts/2019/homelab-2019/" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
 <meta name="twitter:title" content="Homelab Upgrade 2021"/>
 <meta name="twitter:description" content="My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!
 Hardware Upgrades Many say olx is a bad place and full of scammers."/>
@@ -77,16 +78,16 @@ Hardware Upgrades Many say olx is a bad place and full of scammers."/>
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://vakarthik.com/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "Homelab Upgrade 2021",
       "item": "https://vakarthik.com/posts/2021/homelab-2021/"
     }
@@ -106,7 +107,7 @@ Hardware Upgrades Many say olx is a bad place and full of scammers."/>
   "articleBody": "My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!\nHardware Upgrades Many say olx is a bad place and full of scammers. But i never thought i would find good and genuine deals there, especially for servers. Back in september 2020, i came across a deal for Dell R520 server with dual hex-core processor and 128GB of memory for 35k! The deal was posted by IT manager of a small firm in bangalore, and seems they were upgrading. I got 2 Dell R520 with 64GB of RAM and dual hex-core processor for 65k! 64gigs is more than sufficient for me. Thanks to a friend in bangalore, i could get these servers and door deliver it to me free of cost 😉\nThe server had fiber channel cards (seems they were using some SAN storage arrays), dual power supply, dual RJ45 network adapters and iDRAC v7 card. Such a sweet deal for the money. The one thing it did not have was HDD caddy. I was planning to put 5 x 2 TB HDD and make RAIDz2, so I had to shell out some extra money to buy these caddy.\nMy current homelab has the following hardware, juicing around 500W and consuming more than 200 units of electricity per month 😑 I sold the small WD MyCloud EX2 NAS since i am having plenty of drive space in my R520 and proxmox has native zfs support.\nThe Rack I enquired massrack for a 17 to 22U server rack. They told they had a 17U 1000mm depth rack which would cost around 15k. I was not interested to spend it at that time since i had already spent a lot on servers, and decided to create a own rack since my uncle had a pretty laser cutting machine in his factory. The output was somewhat ok, but the main problem was i could not get it closed due to alignment issues and there is a slight mismatch with square holes on rails. I guess i would buy a proper server rack late this year.\n  const myWidget = cloudinary.galleryWidget({ \"cloudName\": \"vakarthik\", \"mediaAssets\": [{ \"publicId\": \"Homelab/PHOTO-2021-01-27-14-57-17\", \"mediaType\": \"image\" }, { \"publicId\": \"Homelab/PHOTO-2021-01-27-14-57-29\", \"mediaType\": \"image\" }, { \"publicId\": \"Homelab/IMG_4345\", \"mediaType\": \"image\" }], \"carouselLocation\": \"bottom\", \"carouselStyle\": \"indicators\", \"container\": \"#my-gallery\" }); myWidget.render();  High Availability (HA) Dilemma Setting up a 3 node proxmox cluster is pretty stright-forward and well documented. So i quickly set-up a 3 node proxmox cluster with my 2 new servers, and time to dig into HA.\nIntially i had set up my services in a VM and made it as highly available VM in proxmox. But there was delay since the VM disk has to be moved from one node to another during failover. Then i stumbled upon docker-swarm which seems to check all the requirements. But the nerds in reddit were advising to go with kubernetes instead of docker-swarm.\nI checked a few tutorials and blogs (mentioned in reference below) and decided to go with k3s, a lightweight version of k8s created by rancher labs.\nFirst i installed rancher-ui and tried to install apps through gui. It was very confusing and i prefer yaml like in docker-compose. So i deleted rancher installation and started creating apps from plain manifests. Somehow i didn’t like helm charts also. Creating a manifest from scratch allows me to customise everything, helm charts allow customisation but, i prefer plain manifests.\nKubernetes was very strange for about a month, and those manifest files looked alien to me at first. But after trying it out and deploying more apps, i realised k8s was the way to go! If one day i decide to sell my homelab hardware due to some reasons, i can still put my apps on cloud with same manifest files (small modifications might be required) in minimal time, as almost all cloud providers have support for k8s engine.\nNow you delete a pod in k3s, it instantly spins another one. A node turns off! no problem, all the services in the failed node are started on available nodes with minimum downtime. The main issue with proxmox HA VM was not the downtime, but the reliability of re-starting services in another node when one fails. Also i use longhorn for persistant storage, which uses free space in all nodes and aggregates them into usable space for persistant-volumes.\nDual WAN and pfSense I already have a 100 Mbps FTTH from cherrinet. Since it had downtime due to cable cut issues (not often but 3-4 times a month) i wanted a backup connection. Luckily BSNL was also providing FTTH in my area. So i decided to get it and set-up dual wan in pfsesne. I downgraded cherrinet plan to 50mbps and BSNL connection is 60mbps. After some tinkering i got the dual wan working in my pfsense. It was not easy as i expected 😏 Here is how mine works. You can read more on CARP and dual WAN setup in netgate official docs, they have got detailed explanation.\nCurrent State This is my current state as of writing this blog post. I use nginx and metallb for ingress, longhorn for storage.\n Upgrades and ToDo There is always something to change and something to upgrade\nApps and Services Have to find out a way to archive all my mailboxes. Need to setup webtrees for family. And anything interesting from r/selfhosted\nBackups As of now i have not configured proper backups for persistant volumes. I am looking setting up minio or direct nfs backup to my zfs pool from inside longhorn. Also for my personal files need to automate my manual backup strategy and push important files to cloud.\nGigabit switch I had a dell powerconnect 16 port switch. The power supply (5V, 8A) on it failed and i purchased a after-market one from amazon, which worked fine for few months. At present it is not working. Need to upgrade to cisco/hp/dell 16-24 port all gigabit switch. Still looking in olx sometimes 😄\nUPS The 1kVA ups which i have is currently the only single point of failure 😨. Also the backup time is less than 30 minutes. Need to get one more 1kVA UPS and use my additional PSU in R520. Also looking at solar setup 😉 let us see\nRack Need to get proper server rack for enclosing the servers and make some arrangement to vent out the hot air from backside. Also need to put blanking panels to avoid hot and cold air mixing.\nDesktop Last one on the list, looking at AMD custom builds. This will take some time…\nReference Some sites, videos which i fould very useful during building my homelab. (ofcourse there is reddit for everything else)\nrpi4cluster\nJust me and Opensource- Youtube\nTechnotim - youtube\n",
   "wordCount" : "1181",
   "inLanguage": "en",
-  "datePublished": "2021-06-20T00:00:00Z",
+  "image": "https://vakarthik.com/papermod-cover.png","datePublished": "2021-06-20T00:00:00Z",
   "dateModified": "2021-06-20T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -146,12 +147,12 @@ Hardware Upgrades Many say olx is a bad place and full of scammers."/>
             <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -201,7 +202,7 @@ Hardware Upgrades Many say olx is a bad place and full of scammers."/>
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Homelab Upgrade 2021
     </h1>
     <div class="post-meta"><span title='2021-06-20 00:00:00 +0000 UTC'>June 20, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Karthik
@@ -334,7 +335,8 @@ myWidget.render();
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

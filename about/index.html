@@ -12,7 +12,6 @@ This site is a result of my interest towards computers, networks etc., and a mem
 <meta name="author" content="Karthik">
 <link rel="canonical" href="https://vakarthik.com/about/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://vakarthik.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
@@ -37,7 +36,7 @@ This site is a result of my interest towards computers, networks etc., and a mem
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -60,13 +59,15 @@ This site is a result of my interest towards computers, networks etc., and a mem
 <meta property="og:description" content="Full time engineer, part-time learner.
 This site is a result of my interest towards computers, networks etc., and a memory of my lost love for photos. Also this has evolved from time to time based on my skills. When i was creating my personal site back in college days, i used to write in html and css. Now after 10 years so much has changed and i write in markdown!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vakarthik.com/about/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/><meta property="article:section" content="" />
-<meta property="article:published_time" content="2019-07-31T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-07-31T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://vakarthik.com/about/" />
+<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta property="article:section" content="" />
+<meta property="article:published_time" content="2019-07-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-31T00:00:00+00:00" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
 <meta name="twitter:title" content="About Me"/>
 <meta name="twitter:description" content="Full time engineer, part-time learner.
 This site is a result of my interest towards computers, networks etc., and a memory of my lost love for photos. Also this has evolved from time to time based on my skills. When i was creating my personal site back in college days, i used to write in html and css. Now after 10 years so much has changed and i write in markdown!"/>
@@ -76,10 +77,10 @@ This site is a result of my interest towards computers, networks etc., and a mem
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "About Me",
       "item": "https://vakarthik.com/about/"
     }
@@ -99,7 +100,7 @@ This site is a result of my interest towards computers, networks etc., and a mem
   "articleBody": "Full time engineer, part-time learner.\nThis site is a result of my interest towards computers, networks etc., and a memory of my lost love for photos. Also this has evolved from time to time based on my skills. When i was creating my personal site back in college days, i used to write in html and css. Now after 10 years so much has changed and i write in markdown!\nI am into selfhosting these days, thanks to the awesome reddit community. I Will try to post stuff related to homelab here.\nIf anyone wishes to ping me, reach me at vakarthik (at) tuta (dot) io\nCredits and Thanks: This site would not be possible with the plethora of great free \u0026 opensource apps. Thanks to the awesome development community.\nThanks to hugo, an awesome static generator and Aditya for this awesome theme.\n",
   "wordCount" : "143",
   "inLanguage": "en",
-  "datePublished": "2019-07-31T00:00:00Z",
+  "image": "https://vakarthik.com/papermod-cover.png","datePublished": "2019-07-31T00:00:00Z",
   "dateModified": "2019-07-31T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -139,12 +140,12 @@ This site is a result of my interest towards computers, networks etc., and a mem
             <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -194,7 +195,7 @@ This site is a result of my interest towards computers, networks etc., and a mem
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       About Me
     </h1>
   </header> 
@@ -217,7 +218,8 @@ This site is a result of my interest towards computers, networks etc., and a mem
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

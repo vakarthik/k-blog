@@ -5,16 +5,100 @@
     <link>https://vakarthik.com/</link>
     <description>Recent content on K&#39;s blog</description>
     <image>
+      <title>K&#39;s blog</title>
       <url>https://vakarthik.com/papermod-cover.png</url>
       <link>https://vakarthik.com/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://vakarthik.com/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.92.2</generator>
+    <language></language>
+    <lastBuildDate>Fri, 05 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://vakarthik.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WPA Enterprise Authentication Using Mikrotik&#39;s User-Manager Package</title>
+      <link>https://vakarthik.com/posts/2024/wpa-enterprise-authentication-mikrotik-user-manager/</link>
+      <pubDate>Fri, 05 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://vakarthik.com/posts/2024/wpa-enterprise-authentication-mikrotik-user-manager/</guid>
+      <description>WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points.</description>
+      <content:encoded><![CDATA[<p>WPA enterprise allows 8021.x RADIUS authentication. I have always wanted to try out certificate based authentication in Wifi networks (EAP-TLS). I have tried many methods, probably this is the easiest way if you have a mikrotik router. Otherwise you may need to deploy something like FreeRADIUS. Here will be configuring the mikrotik router as RADIUS server and our access point(s) as client. This will be very helpful if you have a SOHO and have different OEM access points.</p>
+<p>Note: do not touch the default RADIUS option in miktoik. We will do everything from user-manager package.</p>
+<h3 id="1-user-manager-package">1. User-Manager Package</h3>
+<p>Download User Manager Package from <a href="https://mikrotik.com/download/archive">mikrotik site</a> (double check the version and architecture) and install it. Complete documentation about the package is in <a href="https://help.mikrotik.com/docs/display/ROS/User+Manager">mikrotik site</a>. In short it is a user manager with inbuilt RADIUS server.</p>
+<p>Check out the usage of the package in-depth. It has ton of other features which I have not mentioned.</p>
+<h3 id="2-generating-the-required-certificates">2. Generating the Required Certificates</h3>
+<p>Create CA, certificate for user-manager and user from routeros terminal.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># Generating a Certificate Authority
+/certificate
+add name=radius-ca common-name=&#34;RADIUS CA&#34; key-size=secp384r1 digest-algorithm=sha384 days-valid=1825 key-usage=key-cert-sign,crl-sign
+sign radius-ca ca-crl-host=radius.spacex
+
+# Generating a server certificate for User Manager
+add name=userman-cert common-name=radius.spacex subject-alt-name=DNS:radius.spacex key-size=secp384r1 digest-algorithm=sha384 days-valid=800 key-usage=tls-server
+sign userman-cert ca=radius-ca
+
+# Generating a client certificate
+add name=k-client-cert common-name=k@spacex key-usage=tls-client days-valid=800 key-size=secp384r1 digest-algorithm=sha384
+sign k-client-cert ca=radius-ca
+
+# Exporting the public key of the CA as well as the generated client private key and certificate for distribution to client devices
+export-certificate radius-ca file-name=radius-ca
+
+# A passphrase is needed for the export to include the private key
+export-certificate k-client-cert type=pkcs12 export-passphrase=&#34;your secure pass phrase&#34;
+
+# Please check this for exporting in android - https://stackoverflow.com/a/73512646
+# the -legacy flag is important
+#https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5
+#Important: Read the above link throughly. Do not Skip. The common-name, in my example .spacex (.mikrotik.test) should be present in user certificates. 
+#Otherwise you will break heads, it just won&#39;t work.
+</code></pre></div><h3 id="3-configuring-user-manager">3. Configuring User Manager</h3>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1720183019/Homelab/ROS.png" alt=""  title="Screenshot of ROS settings"  />
+</p>
+<ul>
+<li>
+<p>Profiles tab: Create a default profile from GUI / terminal if not already present.</p>
+</li>
+<li>
+<p>User Groups tab: Create a new user group with <code>certificate-auth</code> as name and choose only <code>EAP-TLS</code> as authentication method. (you can also choose other methods which require a password also)</p>
+</li>
+<li>
+<p>Users tab: Create a new user <code>k@spacex</code> with group <code>certificate-auth</code>.</p>
+</li>
+<li>
+<p>Routers tab: In settings tab check <code>enabled</code> and choose our <code>userman-cert</code>. Leave ports to default.</p>
+</li>
+<li>
+<p>Routers tab: Add a new router. Enter a name and IP address of yor access point. Remember the shared secret, which you will need to enter in your access point. (you can add as many as you want)</p>
+</li>
+</ul>
+<h3 id="4-configure-access-point">4. Configure Access Point</h3>
+<p><img loading="lazy" src="https://res.cloudinary.com/vakarthik/image/upload/v1720183177/Homelab/open-wrt.png" alt=""  title="Screenshot from Open-Wrt Settings"  />
+</p>
+<ul>
+<li>
+<p>These widely vary from software you are using. But basically you need to choose <code>WPA2-Enterprise</code> authentication in your access point to enter RADIUS server IP (IP of mikrotik router) and shared-secret.</p>
+</li>
+<li>
+<p>I have tested it in my tp-link EAP225 running on both tp-link firmware and open-wrt and works fine.</p>
+</li>
+</ul>
+<h3 id="5-configure-clients">5. Configure Clients</h3>
+<p>Add the <code>k-client-cert</code> or whatever name you have give to clients like your mobile and windows. Just a simple search will show many tutorials on how to do it. I have not had any problems expect in android which needed the certificate in <code>legacy p12</code> format (refer step-2).</p>
+<p>Done!</p>
+<p>Connect the wifi SSID, when prompted choose the certificate installed in client.</p>
+<h3 id="6-reference">6. Reference:</h3>
+<p><a href="https://help.mikrotik.com/docs/display/ROS/User+Manager">https://help.mikrotik.com/docs/display/ROS/User+Manager</a></p>
+<p><a href="https://prog.world/how-to-make-wi-fi-mikrotik-and-tp-link-friends-using-radius/">https://prog.world/how-to-make-wi-fi-mikrotik-and-tp-link-friends-using-radius/</a></p>
+<p><a href="https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5">https://help.mikrotik.com/docs/display/ROS/Enterprise+wireless+security+with+User+Manager+v5</a></p>
+<p><a href="https://github.com/multiduplikator/mikrotik_EAP">https://github.com/multiduplikator/mikrotik_EAP</a></p>
+<p><a href="https://www.tp-link.com/us/support/faq/500/">https://www.tp-link.com/us/support/faq/500/</a></p>
+<p><a href="https://openwrt.org/docs/guide-user/network/wifi/encryption">https://openwrt.org/docs/guide-user/network/wifi/encryption</a>
+(wpad package in open-wrt for WPA-enterprise. you need to remove all wpad-* packages and install just wpad)</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>State of Homelab 2022</title>
       <link>https://vakarthik.com/posts/2022/state-of-homelab-2022/</link>
       <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2022/state-of-homelab-2022/</guid>
       <description>A lot has changed in my homelab this year. Most folks in r/homelab start from Pi or a NAS / router to a mini-datacenter at home. But things were quite opposite in my case. I have downsized my homelab to a small network cabinet. Two servers are powered off and one got faulty. Things have shifted to small synology DS920+. pfsense is replaced by mikrotik hex S router.
 Main reason for downsizing are,</description>
@@ -36,12 +120,10 @@ Main reason for downsizing are,</description>
 <p>So far so good. The only thing pending is a fool-proof automated backup system. Recently got a 1 TB storagebox from <a href="https://www.hetzner.com/storage/storage-box">hetzner</a>. Planning to sync between my devices and NAS, and borg-backup important stuff to hetzner box.</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>How I Downloaded IE for 2k</title>
       <link>https://vakarthik.com/posts/2022/how-i-downloaded-internet-explorer-for-2k/</link>
       <pubDate>Sun, 19 Jun 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2022/how-i-downloaded-internet-explorer-for-2k/</guid>
       <description>Many people reacted to the announcement by microsoft to stop support for IE on twitter recently. It felt nostalgic for me too.
 I first started using a PC around 1998-99. I was in 6th grade maybe. As far as I could remember, it had Samsung samtron CRT monitor, a CPU with some intel processor, 40 GB IDE hard disk and a Dax make dial-up modem connected to PCI card.
@@ -57,12 +139,10 @@ We had a BSNL landline at home in those days.</description>
 <p>After a long long time i realized that it was not just Rs.6/- per hour, but Rs.6 along with call charges for the period 🤯. Damn you marketing genius who cleverly did the flyer. I was just a kid!!</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Moving to CalyxOS from iPhone/iOS</title>
       <link>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</link>
       <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/</guid>
       <description>Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.
 I wanted to move to a privacy friendly OS.</description>
@@ -137,12 +217,10 @@ Termux - Terminal emulator</p>
 <p>Hope there is some useful information for you above. I hope one day i will clear all my digital tracks and use OS like graphene as a daily driver. 😃</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Homelab Upgrade 2021</title>
       <link>https://vakarthik.com/posts/2021/homelab-2021/</link>
       <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2021/homelab-2021/</guid>
       <description>My homelab was running on a single dell r210. It had pfsense and few VMs, all the self-hosted apps were deployed using docker. Things were running fine for more than a year but i was missing high-availability, since i had only one server. I wanted my services to be available always! To achieve high availability on proxmox you need 3 servers minimum. Thus the hunt for 2 more began!
 Hardware Upgrades Many say olx is a bad place and full of scammers.</description>
@@ -213,12 +291,10 @@ myWidget.render();
 <p><a href="https://www.youtube.com/channel/UCOk-gHyjcWZNj3Br4oxwh0A">Technotim - youtube</a></p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>HTTPS for Homelab using Caddy and ACME DNS</title>
       <link>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</link>
       <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2021/compiling-and-building-caddy/</guid>
       <description>HTTPS for Homelab When I wanted to install bitwarden_rs (now vaultwarden), i read their wiki and got struck with an idea to setup my homelab apps behind https.
 Then the hunt for reverse proxies started and i settled down with caddy after trying out nginx and traefik (both are good, but not suitable for my usecase). Caddy is a simple configurable reverse proxy and webserver. I use it as reverse proxy and HTTPS provider for all my homelab apps.</description>
@@ -327,12 +403,10 @@ sudo chmod 755 /usr/local/bin/caddy
 <p><a href="https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/">https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/</a></p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Homelab v1</title>
       <link>https://vakarthik.com/posts/2019/homelab-2019/</link>
       <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/posts/2019/homelab-2019/</guid>
       <description>Intro ping 127.0.0.1
 There are some interests which do not change! I used to write html and css in college days. I have had shared hosting accounts, VPS and so on! I still remember creating a small site for college workshop using WordPress. I learnt web development and managing VPS through youtube. I have always wanted to host on my own server and somehow have managed to do it this year.</description>
@@ -411,12 +485,10 @@ Server &amp; Rack:</p>
 <p><a href="https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/">https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/</a></p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>About Me</title>
       <link>https://vakarthik.com/about/</link>
       <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/about/</guid>
       <description>Full time engineer, part-time learner.
 This site is a result of my interest towards computers, networks etc., and a memory of my lost love for photos. Also this has evolved from time to time based on my skills. When i was creating my personal site back in college days, i used to write in html and css. Now after 10 years so much has changed and i write in markdown!</description>
@@ -429,12 +501,10 @@ This site is a result of my interest towards computers, networks etc., and a mem
 <p>Thanks to <a href="http://gohugo.io">hugo</a>, an awesome static generator and <a href="https://github.com/adityatelange/hugo-PaperMod">Aditya</a> for this awesome theme.</p>
 ]]></content:encoded>
     </item>
-    
     <item>
       <title>Photos</title>
       <link>https://vakarthik.com/photos/</link>
       <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://vakarthik.com/photos/</guid>
       <description>        </description>
       <content:encoded><![CDATA[<figure class="floatleft"><a href="/photos/landscape/">
@@ -455,8 +525,5 @@ This site is a result of my interest towards computers, networks etc., and a mem
 
 ]]></content:encoded>
     </item>
-    
-    
-    
   </channel>
 </rss>

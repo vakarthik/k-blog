@@ -12,7 +12,6 @@ I wanted to move to a privacy friendly OS.">
 <meta name="author" content="Karthik">
 <link rel="canonical" href="https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://vakarthik.com/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://vakarthik.com/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://vakarthik.com/favicon-32x32.png">
@@ -37,7 +36,7 @@ I wanted to move to a privacy friendly OS.">
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -60,14 +59,16 @@ I wanted to move to a privacy friendly OS.">
 <meta property="og:description" content="Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.
 I wanted to move to a privacy friendly OS." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/" /><meta property="og:image" content="https://vakarthik.com/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-12-22T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-12-22T00:00:00&#43;00:00" />
+<meta property="og:url" content="https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/" />
+<meta property="og:image" content="https://vakarthik.com/papermod-cover.png" />
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-22T00:00:00+00:00" />
 <meta property="og:see_also" content="https://vakarthik.com/posts/2021/homelab-2021/" /><meta property="og:see_also" content="https://vakarthik.com/posts/2021/compiling-and-building-caddy/" /><meta property="og:see_also" content="https://vakarthik.com/posts/2019/homelab-2019/" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png"/>
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://vakarthik.com/papermod-cover.png" />
 <meta name="twitter:title" content="Moving to CalyxOS from iPhone/iOS"/>
 <meta name="twitter:description" content="Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.
 I wanted to move to a privacy friendly OS."/>
@@ -77,16 +78,16 @@ I wanted to move to a privacy friendly OS."/>
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://vakarthik.com/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "Moving to CalyxOS from iPhone/iOS",
       "item": "https://vakarthik.com/posts/2021/moving-to-calyxos-iphone/"
     }
@@ -106,7 +107,7 @@ I wanted to move to a privacy friendly OS."/>
   "articleBody": "Reasons for moving I have been using iPhone for more than 5 years. It started from iPhone 4, 5s, 7, XR etc., iOS is solid and over last few years android has really caught up (not referring UI but stability and usability). Also over the last few years there have been multiple occasions were big tech use our data more and more for personalised ads.\nI wanted to move to a privacy friendly OS. I have switched from Windows to Linux completely (both laptop and desktop) and using it as a daily driver for the past one year. In iOS there is a little you could do to customise settings, and you just have to trust apple with everything. I really like the concept of having controls in our hands. Fine grain controls are possible with android and its apps, but I do not want to leave one big tech and join another. It wouldn’t help the motive for my switch.\nI looked at pinephone, and its availabilty in India is a big question. So with not much of an option left, i was looking for custom ROMs in xda forum and other places.\n(for those of you intrested in privacy, check the techlore and intel techniques )\nHopping on to CalyxOS I somehow stumbled upon grapheneos and calyxos. I did some research ( video-1 video-2 ) and finally settled with calyxos. One main reason is usability of some google apps in calyxos over graphene. Also i do not want to jump into privacy express, but take some baby steps to see where it leads.\nI bought a new Pixel 4a from flipkart during offers. It costs around 25k plus I got google nest for free. So i powered my pixel, just skipped all setup steps wherever possible and cliked on build number few to become developer, and then my heart burst when i saw ‘OEM unlocking ' option grayed out. After a quick google search, i did a factory reset which enabled the ‘OEM unlocking’ option. Then you follow standard installation procedure detailed in calyx website. Just few simple steps.\nEsim migration woes There are plenty of tutorials when you search in google for esim migration. But still I took more than 2 attempts to correct a simple mistake I made. I even went on to read official manual from gsm, which was meant for telecom operators.\nStep 1. From old mobile send the following SMS to 199. You will receive a 19 digit eSIM number 32 digit activation code. GETESIM Step 2. Send the following SMS from old mobile to 199 SIMCHG Sleep (2) hrs Step 3. Confirm by sending SMS '1' to 183 Step 4. Enter the 19 digit eSIM code during Activation call Step 5. Add mobile data plan in your phone, and enter the activation code manually in the following format. LPA:1$smdprd.jio.com$Activationcode (note: only for jio, other operators, check the respective website) Now your eSIM will get activated successfully. All the tutorials out there are just copy paste from someone and none of them clearly mention you should send EID of new phone (although it’s kind of obvious, i did mistake twice). Also note as per GSM manual the activation code need not be exactly 32 characters. There are different formats.\nSetting up as a daily driver This is my primary phone and I set it up so that it is more usable and as private as possible.\nCamera Download the GCam app from xda forum. It is much better than default camera and other camera apps.\nMicrog, Aurora store and google account I tried using microg without a google account at first. But since Aurora Store uses a random gmail to login, and the gmail account is created in a different country, some specific apps to India are not listed in store.\nI quickly created a throwaway gmail address with false details and using it for this purpose. I would also advise you to do the same since many apps related banking won’t be available on F-Droid.\nVPN Tried two to three different VPN and settled with Windscribe (referral link). Got this in Black Friday offer, $30 per year pro account. It had three servers in India with good speeds. The server in Chennai seems to be down since 10 days. I am using Pune or Mumbai. I do not use VPN for work profile. The email provider has Geo restrictions in place. Whenever the VPN chooses some other country, and email client checks mail using IMAP, bam i get a blocked notification from email provider. So better I use Work profile without VPN and turn it off after work.\nUsable apps Some apps which I find very useful, apart from default, popular and well known apps. (some are in f-driod and some are in play store)\nAntennapod - Podcasts\nBackdrops - Wallpapers\nBromite - Browser FeedMe - Feed Reader\nGenius Scan - Scanner App\nInfinity - Reddit Client\nQKSMS - SMS\nOpenWeather - Weather\nSimplelogin - Email Alias (I have a pro account grabbed during BF)\nObsidian - Notes\nSyncthing - Sync (for camera and notes folder sync)\nTermux - Terminal emulator\nI have linked an article containing some very useful apps in f-droid store.\nApps working and not working The only app which i used in iPhone and not working in calyxos is Google pay. Apart from that i use Yono SBI, BHIM, Kite and all other apps work well so far without any issues (3 months as of this writing).\nI really hate that google has put phone number in first and UPI ID as second. I mean many of my friends have no idea of their UPI ID. They just say Gpay me. 😞\nOther than this i really miss Android Auto.\nApps i wish i have not installed Google does some things so well, for which there is no real replacement. One example is Google Maps. Although Apple Maps is catching up fast, it has a long way to go in India. It is true for all other open source map apps out there. If you are in India, just install google maps. No alternatives as of now.\nAnd since my work requires whatsapp and google meet, i have installed both of them. I wanted to get rid of whatsapp badly, but work updates are done in whatsapp groups. 😑\nConclusion Overall I am happy with the switch. Now I can control which apps will go through VPN and which apps will not even have Internet access, using built-in Datura firewall, which was out of scope in iOS. Not to mention calyx is pretty stable on pixel devices.\nHope there is some useful information for you above. I hope one day i will clear all my digital tracks and use OS like graphene as a daily driver. 😃\n",
   "wordCount" : "1156",
   "inLanguage": "en",
-  "datePublished": "2021-12-22T00:00:00Z",
+  "image": "https://vakarthik.com/papermod-cover.png","datePublished": "2021-12-22T00:00:00Z",
   "dateModified": "2021-12-22T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -146,12 +147,12 @@ I wanted to move to a privacy friendly OS."/>
             <a href="https://vakarthik.com" accesskey="h" title="K&#39;s blog (Alt + H)">K&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -201,7 +202,7 @@ I wanted to move to a privacy friendly OS."/>
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Moving to CalyxOS from iPhone/iOS
     </h1>
     <div class="post-meta"><span title='2021-12-22 00:00:00 +0000 UTC'>December 22, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Karthik
@@ -332,7 +333,8 @@ Termux - Terminal emulator</p>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://vakarthik.com">K&#39;s blog</a></span>
+        <span>&copy; 2024 <a href="https://vakarthik.com">K&#39;s blog</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
